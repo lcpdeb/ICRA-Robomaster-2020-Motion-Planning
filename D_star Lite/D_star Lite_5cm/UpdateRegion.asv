@@ -1,0 +1,47 @@
+function UpdateRegion(RedRegenerate, RedSupply, BlueRegenerate, BlueSupply, ShootFree, MoveFree)
+global side;
+global obstacle;
+global accuracy;
+RedRegenerate_obstacle=[];
+for i=floor(RedRegenerate.x):1:ceil(RedRegenerate.x+5.4*10/accuracy)
+    for j=floor(RedRegenerate.y):1:ceil(RedRegenerate.y+4.8*10/accuracy)
+        RedRegenerate_obstacle=[RedRegenerate_obstacle;
+                                i,j];
+    end
+end
+
+ShootFree_obstacle=[];
+for i=floor(ShootFree.x):1:ceil(ShootFree.x+5.4*10/accuracy)
+    for j=floor(ShootFree.y):1:ceil(ShootFree.y+4.8*10/accuracy)
+        ShootFree_obstacle=[ShootFree_obstacle;
+                            i,j];
+    end
+end
+
+BlueRegenerate_obstacle=[];
+for i=floor(BlueRegenerate.x):1:ceil(BlueRegenerate.x+5.4*10/accuracy)
+    for j=floor(BlueRegenerate.y):1:ceil(BlueRegenerate.y+4.8*10/accuracy)
+        BlueRegenerate_obstacle=[BlueRegenerate_obstacle;
+                                 i,j];
+    end
+end
+
+MoveFree_obstacle=[];
+for i=floor(MoveFree.x):1:round(MoveFree.x+5.4*10/accuracy)
+    for j=floor(MoveFree.y):1:round(MoveFree.y+4.8*10/accuracy)
+        MoveFree_obstacle=[MoveFree_obstacle;
+                            i,j];
+    end
+end
+obstacle=[obstacle;
+          MoveFree_obstacle
+          ShootFree_obstacle];
+
+if all(side=='R')
+    obstacle=[obstacle;
+          BlueRegenerate_obstacle];
+elseif all(side=='B')
+    obstacle=[obstacle;
+          RedRegenerate_obstacle];
+end
+end

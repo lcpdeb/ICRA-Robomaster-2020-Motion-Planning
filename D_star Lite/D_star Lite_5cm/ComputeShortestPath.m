@@ -1,4 +1,4 @@
-function ComputeFirstPath()
+function ComputeShortestPath()
     global s_start;
     global s_goal;
     global U;
@@ -6,12 +6,8 @@ function ComputeFirstPath()
     global g;
     global c;
     global rhs;
-    global map;
-    global obstacle;
     global xmax;
     global ymax;
-    global close_list;
-    close_list=[];
     [key_s_start(1),key_s_start(2)]=CalculateKey(s_start);
     [key_TopKey(1),key_TopKey(2),~]=minKey(U);
     while(CompareKey(key_TopKey,key_s_start)||(rhs(s_start(1), s_start(2))>g(s_start(1), s_start(2))))%当优先列表中最优点（key最小）的key值小于起始点的key值或者起始点局部不一致（g和rhs不等）时
@@ -20,33 +16,27 @@ function ComputeFirstPath()
         [k_old(1),k_old(2),minIndex]=minKey(U);
         u=U(minIndex,:);
         
-        [k_new(1),k_new(2)]=CalculateKey(u);%计算该节点新key值
-        close_list=[close_list
-                    u];        
+        [k_new(1),k_new(2)]=CalculateKey(u);%计算该节点新key值     
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         pause(0.0001)        
-        % plot current node
-        if ~isSamePosition(u, s_start)
-            red=norm(u(1:2)-s_start)/norm(s_goal-s_start);
-            if red>1
-                red=abs(2-1*red);
-                green=0;
-            else
-                green=1-red;
-            end
-            node_color=[red,green,0];
-            plot(u(1),u(2),'o','MarkerFaceColor',node_color,'MarkerEdgeColor',node_color)
-        end
+%         % plot current node
+%         if ~isSamePosition(u, s_start)
+%             red=norm(u(1:2)-s_start)/norm(s_goal-s_start);
+%             if red>1
+%                 red=abs(2-1*red);
+%                 green=0;
+%             else
+%                 green=1-red;
+%             end
+%             node_color=[red,green,0];
+%             plot(u(1),u(2),'o','MarkerFaceColor',node_color,'MarkerEdgeColor',node_color)
+%         end
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if(CompareKey(k_old,k_new))%如果该节点的key值大于原先的key值
             %U.Update(u,k_new)
             U(minIndex,3:4)=k_new;
-            U(minIndex,5)=size(close_list,1);
             
-
-%             U=[U;
-%                u(1:2),k_new,size(close_list,1)];%将网格点插入到U
         elseif(g(u(1),u(2))>rhs(u(1),u(2)))%局部过一致，边缘代价函数值变低，代表网格上障碍物被清除或者搜索到一条更短捷径,开始扩展节点
             g(u(1),u(2))=rhs(u(1),u(2));%使局部一致
             U(minIndex,:)=[];%删除该节点
@@ -57,9 +47,6 @@ function ComputeFirstPath()
                 if s_temp(1)<1||s_temp(1)>xmax||s_temp(2)<1||s_temp(2)>ymax
                     continue
                 end
-%                 if isInCloseList(s_temp,close_list)
-%                     continue
-%                 end
 %                 if isInOpenList(s_temp,U)
 %                     continue
 %                 end
@@ -73,8 +60,8 @@ function ComputeFirstPath()
                     rhs(s_temp(1),s_temp(2))=min(rhs(s_temp(1),s_temp(2)),c(s_temp(1),s_temp(2))+g(u(1),u(2)));
                 end
                 UpdateVertex(s_temp);%遍历前继节点集并更新前继节点的key值
-                % plot temp next node
-                plot(s_temp(1),s_temp(2),'o','color','b')
+%                 % plot temp next node
+%                 plot(s_temp(1),s_temp(2),'o','color','b')
             end
             
 %%%%%%%%%%%%%%%% REACH TO HERE AFTER NEW OBSTACLE SCANNED %%%%%%%%%%%%%%%%
@@ -106,8 +93,5 @@ function ComputeFirstPath()
         end
         [key_s_start(1),key_s_start(2)]=CalculateKey(s_start);
         [key_TopKey(1),key_TopKey(2),~]=minKey(U);
-%         [key_TopKey(1),key_TopKey(2)]=UTopKey();
-    % 保存当前节点为上一个节点，为下个loop用
-    last_u=u;
     end
 end

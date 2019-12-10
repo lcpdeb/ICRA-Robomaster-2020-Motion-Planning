@@ -7,11 +7,8 @@ clear;
 close all
 global accuracy;
 accuracy=10; % cm
-global robot_size;
-robot_size=45; % cm
-global side;
-side='R';
 % input
+global side;
 global s_start;
 global s_goal;
 global xmax;
@@ -25,17 +22,17 @@ global rhs;
 global key;
 global neighbour;
 global obstacle;
-global cover;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INITIALIZATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+side='B';
 xmax=81*10/accuracy+1;%定义地图大小-行
 ymax=51*10/accuracy+1;%定义地图大小-列
-
+s_start=round([75 50]*10/accuracy);%起始点
+start_saved=s_start;%储存起始点
+s_goal=round([5 5]*10/accuracy);%目标点
 
 %% 生成边界和障碍物
 boundary=GetBoundary();
 obstacle=GetObstacle();
-cover=GetObstacleCover();
-
 % 更新活动区域
 RedRegenerate.x=2.3*10/accuracy+1;
 RedRegenerate.y=31.2*10/accuracy+1;
@@ -63,6 +60,7 @@ close_list=[];
 k_m=0;%记录最初起点到当前起始点的代价值
 g=[];%g和rhs表示节点s到目标点的最小代价的估计值
 rhs=[];%rhs是由其前向节点（起始点到当前点）的g值计算得到
+
 key=[];
 neighbour=[-1,0; % 8 direction
            -1,1;
@@ -72,12 +70,17 @@ neighbour=[-1,0; % 8 direction
            1,-1;
            0,-1;
            -1,-1]; 
+
+s_last=s_start;%当前位置点sl(下一时刻的位置点)视为新的起始点反复计算目标点sg与新的起始点间的最短路径
 g(1:xmax,1:ymax)=Inf;%遍历地图节点集S并初始化,这里注意行列对应的坐标是相反的
 rhs(1:xmax,1:ymax)=Inf;
 c(1:xmax,1:ymax)=0;
-for i=1:1:size(cover,1)
-    c(cover(i,1),cover(i,2))=Inf;
-end
+% for i=1:1:size(obstacle,1)
+%     c(obstacle(i,1),obstacle(i,2))=Inf;
+% end
+rhs(s_goal(1),s_goal(2))=0;%目标点rhs置0
+CalculateKey(s_goal);
+U=[s_goal,norm(s_start-s_goal),0];%将目标点及其key值插入到优先列表U中
 %% %%%%%%%%%%%%%%%%%%%%%% SCANNER %%%%%%%%%%%%%%%%%%%%%%%%%
 % Half radius of the real SCANNER 
 scanner_size=5;
@@ -98,31 +101,12 @@ xticks(0:1:xmax+1)
 yticks(0:1:ymax+1)
 xlim([-1.2*scanner_size,xmax+1.2*scanner_size])
 ylim([-1.2*scanner_size,ymax+1.2*scanner_size])
-set(gcf, 'position', [0 0 15*xmax 15*ymax]);
+set(gcf, 'position', [0 0 1000 1000]);
 
-%%
-plot(cover(:,1),cover(:,2),'s','MarkerSize',accuracy,'MarkerFaceColor','w','MarkerEdgeColor','k')
-%%
 plot(obstacle(:,1),obstacle(:,2),'s','MarkerSize',accuracy,'MarkerFaceColor',[0.7,0.7,0.7],'MarkerEdgeColor','k')
-plot(boundary(:,1),boundary(:,2),'s','MarkerSize',accuracy','MarkerFaceColor','w','MarkerEdgeColor','k')
+plot(boundary(:,1),boundary(:,2),'s','MarkerSize',accuracy','MarkerFaceColor',[0.99,0.99,0.99],'MarkerEdgeColor','k')
 PlotRealRange(RedRegenerate, RedSupply, BlueRegenerate, BlueSupply, ShootFree, MoveFree);
-%% Choose Start and Goal
-% s_start=round([75 50]*10/accuracy);%起始点
-s_start=round(ginput(1));
-while c(s_start(1),s_start(2))==Inf
-    s_start=round(ginput(1));
-end
-start_saved=s_start;%储存起始点
-% s_goal=round([5 5]*10/accuracy);%目标点
-s_goal=round(ginput(1));
-while c(s_goal(1),s_goal(2))==Inf
-    s_goal=round(ginput(1));
-end
 %%
-s_last=s_start;%当前位置点sl(下一时刻的位置点)视为新的起始点反复计算目标点sg与新的起始点间的最短路径
-rhs(s_goal(1),s_goal(2))=0;%目标点rhs置0
-CalculateKey(s_goal);
-U=[s_goal,norm(s_start-s_goal),0];%将目标点及其key值插入到优先列表U中
 goal_point=plot(s_goal(1),s_goal(2),'s','MarkerSize',accuracy,'MarkerFaceColor','r','MarkerEdgeColor','k');
 start_point=plot(s_start(1),s_start(2),'s','MarkerSize',accuracy,'MarkerFaceColor','b','MarkerEdgeColor','k');
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMPUTE FIRST OPTIMAL PATH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -134,12 +118,7 @@ path=GeneratePath();%生成路径
 %       path];
 
 % plot path, update in main
-try
-    path_line=plot(path(:,1),path(:,2),'LineWidth',round(accuracy/2),'Color','r');
-catch
-    disp('END')
-    end_flag=1;
-end
+path_line=plot(path(:,1),path(:,2),'LineWidth',round(accuracy/2),'Color','r');
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NEW OBSTACLE/FREE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % new_obstacle=[1 30
@@ -259,13 +238,9 @@ scanner_outer=rectangle('LineWidth',2,'edgecolor','y','Visible','off');
 
 
 % New start
-try
-    path_index=1;
-    s_start=path(path_index,:);
-    end_flag=0;
-catch
-    end_flag=1;
-end
+path_index=1;
+s_start=path(path_index,:);
+end_flag=0;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    MAIN LOOP    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 while~isSamePosition(s_start,s_goal) && ~end_flag%s_start不等于s_goal
     pause(0.1)

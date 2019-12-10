@@ -42,17 +42,33 @@ for i=floor(36*10/accuracy)+1:1:ceil(46*10/accuracy)+1
     end
 end
 %%% center obstacle
-for k=0:1:ceil(3*sqrt(2)/2*10/accuracy)
-    for i=floor((40.5-3*sqrt(2)/2)*10/accuracy)+k+1:1:ceil((40.5+3*sqrt(2)/2)*10/accuracy)-k+1
-       obstacle=[obstacle
-                i,ceil(25.5*10/accuracy)+k+1];
+for k=floor(3*sqrt(2)/2):1:ceil(3*sqrt(2)/2)
+    for floor((40.5-3*sqrt(2)/2)*10/accuracy)+k+1:1:ceil((40.5+3*sqrt(2)/2)*10/accuracy)-k+1
     end
 end
-for k=floor(-3*sqrt(2)/2*10/accuracy):1:0
-    for i=floor((40.5-3*sqrt(2)/2)*10/accuracy)-k+1:1:ceil((40.5+3*sqrt(2)/2)*10/accuracy)+k+1
-       obstacle=[obstacle
-                i,floor(25.5*10/accuracy)+k+1];
-    end
+for i=77:1:87
+    obstacle=[obstacle
+          i,25.5*10/accuracy+0+1];
+end
+for i=78:1:86
+        obstacle=[obstacle
+          i,25.5*10/accuracy+1+1];
+end
+for i=79:1:85
+        obstacle=[obstacle
+          i,25.5*10/accuracy+2+1];
+end
+for i=80:1:84
+        obstacle=[obstacle
+          i,25.5*10/accuracy+3+1];
+end
+for i=81:1:83
+        obstacle=[obstacle
+          i,25.5*10/accuracy+4+1];
+end
+for i=82:1:82
+        obstacle=[obstacle
+          i,25.5*10/accuracy+5+1];
 end
 %%% center obstacle
 for i=floor(58*10/accuracy)+1:1:ceil(66*10/accuracy)+1
