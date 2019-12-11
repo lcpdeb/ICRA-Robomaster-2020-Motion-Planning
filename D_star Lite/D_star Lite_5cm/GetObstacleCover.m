@@ -91,7 +91,7 @@ for k=floor(-3*sqrt(2)/2*10/accuracy)-floor(robot_size/2/accuracy):1:0
     end
 end
 %%% center obstacle cover
-
+%% boundary cover
 for k=1:1:floor(robot_size/2/accuracy)
     for i1=0+k:(ymax+1-k)
         cover=[cover;[0+k i1]]; % The top side of the map, the first row in the matrix

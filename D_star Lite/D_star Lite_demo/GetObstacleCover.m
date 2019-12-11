@@ -92,18 +92,30 @@ for k=floor(-3*sqrt(2)/2*10/accuracy)-floor(robot_size/2/accuracy):1:0
 end
 %%% center obstacle cover
 
-for k=0:1:floor(robot_size/2/accuracy)
-    for i1=0:(ymax+1)
-        cover=[cover;[0 i1]]; % The top side of the map, the first row in the matrix
+for k=1:1:floor(robot_size/2/accuracy)
+    for i1=0+k:(ymax+1-k)
+        cover=[cover;[0+k i1]]; % The top side of the map, the first row in the matrix
     end
-    for i2=1:(xmax+1)
-        cover=[cover;[i2 0]]; % The left side of the map, the first column in matrix
+    for i2=1+k:(xmax+1-k)
+        cover=[cover;[i2 0+k]]; % The left side of the map, the first column in matrix
     end
-    for i3=1:(ymax+1)
-        cover=[cover;[xmax+1 i3]]; % The bottom side of the map, the last row in the matrix
+    for i3=1+k:(ymax+1-k)
+        cover=[cover;[xmax+1-k i3]]; % The bottom side of the map, the last row in the matrix
     end
-    for i4=1:(xmax+1)
-        cover=[cover;[i4 ymax+1]]; % The right side of the map, the last column in the matrix
+    for i4=1+k:(xmax+1-k)
+        cover=[cover;[i4 ymax+1-k]]; % The right side of the map, the last column in the matrix
     end
 end
+
+%%%%
+for i=4:1:11
+    cover=[cover;
+        i,11];
+end
+for i=4:1:11
+    cover=[cover;
+        11,i];
+end
+%%%%
+
 end

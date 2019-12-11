@@ -1,16 +1,16 @@
 function obstacle=GetObstacle()
 global accuracy;
 obstacle=[];
-%%%%
-for i=4:1:11
-    obstacle=[obstacle;
-        i,11];
-end
-for i=4:1:11
-    obstacle=[obstacle;
-        11,i];
-end
-%%%%
+% %%%%
+% for i=4:1:11
+%     obstacle=[obstacle;
+%         i,11];
+% end
+% for i=4:1:11
+%     obstacle=[obstacle;
+%         11,i];
+% end
+% %%%%
 for i=floor(0*10/accuracy)+1:1:ceil(10*10/accuracy)+1
     for j=floor(38.5*10/accuracy)+1:1:ceil(41*10/accuracy)+1
         obstacle=[obstacle;
