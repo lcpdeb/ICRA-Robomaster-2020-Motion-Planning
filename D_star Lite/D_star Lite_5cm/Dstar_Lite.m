@@ -79,10 +79,10 @@ neighbour=[-1,0; % 8 direction
            -1,-1]; 
 g(1:xmax,1:ymax)=Inf;%遍历地图节点集S并初始化,这里注意行列对应的坐标是相反的
 rhs(1:xmax,1:ymax)=Inf;
-% c(1:xmax,1:ymax)=0;
-% for i=1:1:size(cover,1)
-%     c(cover(i,1),cover(i,2))=Inf;
-% end
+c(1:xmax,1:ymax)=0;
+for i=1:1:size(cover,1)
+    c(cover(i,1),cover(i,2))=Inf;
+end
 %% %%%%%%%%%%%%%%%%%%%%%% SCANNER %%%%%%%%%%%%%%%%%%%%%%%%%
 % Radius of the real SCANNER 
 scanner_size=5;

@@ -3,7 +3,6 @@ function rhs_cal(s)%¼ÆËã½Úµãrhs
     global rhs;
     global g;
     global c;
-    global map;
     global s_goal;
     global xmax;
     global ymax;
