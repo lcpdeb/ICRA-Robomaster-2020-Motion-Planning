@@ -18,19 +18,19 @@ function ComputeShortestPath()
         
         [k_new(1),k_new(2)]=CalculateKey(u);%计算该节点新key值     
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        pause(0.0001)        
-        % plot current node
-        if ~isSamePosition(u, s_start)
-            red=norm(u(1:2)-s_start)/norm(s_goal-s_start);
-            if red>1
-                red=abs(2-1*red);
-                green=0;
-            else
-                green=1-red;
-            end
-            node_color=[red,green,0];
-            plot(u(1),u(2),'o','MarkerFaceColor',node_color,'MarkerEdgeColor',node_color)
-        end
+%         pause(0.0001)        
+%         % plot current node
+%         if ~isSamePosition(u, s_start)
+%             red=norm(u(1:2)-s_start)/norm(s_goal-s_start);
+%             if red>1
+%                 red=abs(2-1*red);
+%                 green=0;
+%             else
+%                 green=1-red;
+%             end
+%             node_color=[red,green,0];
+%             plot(u(1),u(2),'o','MarkerFaceColor',node_color,'MarkerEdgeColor',node_color)
+%         end
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if(CompareKey(k_old,k_new))%如果该节点的key值大于原先的key值
@@ -60,8 +60,10 @@ function ComputeShortestPath()
                     rhs(s_temp(1),s_temp(2))=min(rhs(s_temp(1),s_temp(2)),c(s_temp(1),s_temp(2))+g(u(1),u(2)));
                 end
                 UpdateVertex(s_temp);%遍历前继节点集并更新前继节点的key值
-                % plot temp next node
-                plot(s_temp(1),s_temp(2),'o','color','b')
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 % plot temp next node
+%                 plot(s_temp(1),s_temp(2),'o','color','b')
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             end
             
 %%%%%%%%%%%%%%%% REACH TO HERE AFTER NEW OBSTACLE SCANNED %%%%%%%%%%%%%%%%

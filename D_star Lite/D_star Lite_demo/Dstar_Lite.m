@@ -81,7 +81,7 @@ for i=1:1:size(cover,1)
 end
 %% %%%%%%%%%%%%%%%%%%%%%% SCANNER %%%%%%%%%%%%%%%%%%%%%%%%%
 % Half radius of the real SCANNER 
-scanner_size=8;
+scanner_size=12;
 scanner_region=[];
 for i=-scanner_size:1:scanner_size
     for k=-scanner_size:1:scanner_size
