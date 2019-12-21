@@ -31,8 +31,6 @@ void ComputeShortestPath(void)
     temp_key = GetMinKey(U);
     //TopKey取前两位
     key_TopKey = temp_key.head(2).array();
-    //minIndex取第三位
-    minIndex = temp_key(2);
 
 
     while (CompareKey(key_TopKey, key_s_start) || (rhs(s_start(0), s_start(1)) > g(s_start(0), s_start(1))))
@@ -86,6 +84,7 @@ void ComputeShortestPath(void)
                         cost = INF;
                     }
                     rhs(s_temp(0), s_temp(1)) = fmin(rhs(s_temp(0), s_temp(1)), cost + g(u(0), u(1)));
+                    //std::cout << "rhs(" << s_temp(0) << "," << s_temp(1) << ") : " << rhs(s_temp(0), s_temp(1)) << std::endl;
                 }
                 UpdateVertex(s_temp);
             }

@@ -96,8 +96,6 @@ void appendRow(MatrixXd& matrix, RowVectorXd& vector)
     matrix.conservativeResize(numRows, NoChange);
 
     matrix.row(numRows-1) = vector;
-
-    
 }
 
 /* End of code generation (Initialize.cpp) */

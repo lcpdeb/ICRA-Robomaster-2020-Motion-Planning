@@ -60,6 +60,7 @@ function ComputeShortestPath()
                         cost=Inf;
                     end
                     rhs(s_temp(1),s_temp(2))=min(rhs(s_temp(1),s_temp(2)),cost+g(u(1),u(2)));
+%                     fprintf("rhs(%d,%d): %d\n",s_temp(1),s_temp(2),rhs(s_temp(1),s_temp(2)))
                 end
                 UpdateVertex(s_temp);%遍历前继节点集并更新前继节点的key值
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

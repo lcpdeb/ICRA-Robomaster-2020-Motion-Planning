@@ -39,14 +39,14 @@ void UpdateVertex(RowVectorXd u)
         U(isInListIndex, 2) = key(0);
         U(isInListIndex, 3) = key(1);
     }
-    else if ((g(u(0), u(1)) != rhs(u(0), u(1)) && !isInListFlag))
+    else if ((g(u(0), u(1)) != rhs(u(0), u(1))) && !isInListFlag)
     {
         //计算key值后加入U
         key = CalculateKey(u);
         temp_row << u(0), u(1), key;
         appendRow(U, temp_row);
     }
-    else if ((g(u(0), u(1)) == rhs(u(0), u(1)) && isInListFlag))
+    else if ((g(u(0), u(1)) == rhs(u(0), u(1))) && isInListFlag)
     {       
         //从U中删除节点
         removeRow(U, isInListIndex);
