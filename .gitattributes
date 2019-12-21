@@ -1,2 +1,2 @@
 # Auto detect text files and perform LF normalization
-*.swift linguist-language=cpp
+*.m linguist-language=cpp
