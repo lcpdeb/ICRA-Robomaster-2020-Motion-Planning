@@ -1,6 +1,20 @@
 ﻿  GeneratePath.cpp
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\GeneratePath.cpp(39,49): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\GeneratePath.cpp(39,38): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\GeneratePath.cpp(41,49): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\GeneratePath.cpp(41,38): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\GeneratePath.cpp(38,49): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\GeneratePath.cpp(38,38): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\GeneratePath.cpp(40,49): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\GeneratePath.cpp(40,38): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+  UpdateVertex.cpp
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\UpdateVertex.cpp(31,19): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\UpdateVertex.cpp(31,13): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\UpdateVertex.cpp(31,38): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\UpdateVertex.cpp(31,32): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\UpdateVertex.cpp(39,24): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\UpdateVertex.cpp(39,18): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\UpdateVertex.cpp(39,43): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\UpdateVertex.cpp(39,37): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\UpdateVertex.cpp(46,24): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\UpdateVertex.cpp(46,18): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\UpdateVertex.cpp(46,43): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\UpdateVertex.cpp(46,37): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
+  Generating Code...
   D_start_Lite.vcxproj -> D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\x64\Debug\D_start_Lite.exe

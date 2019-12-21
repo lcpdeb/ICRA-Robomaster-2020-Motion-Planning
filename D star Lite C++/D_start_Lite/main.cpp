@@ -27,6 +27,7 @@ int main()
     ComputeShortestPath();
     path = GeneratePath();
     s_last = s_start;
+    std::cout << path << std::endl;
 
     std::ofstream path_file("pathcpp.txt");
     path_file << path;

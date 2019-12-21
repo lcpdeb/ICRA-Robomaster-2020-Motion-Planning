@@ -1,7 +1,4 @@
 /* Include files */
-#include <iostream>
-#include <stdio.h>
-
 #include "main.h"
 #include "Initialize.h"
 #include "ComputeShortestPath.h"
