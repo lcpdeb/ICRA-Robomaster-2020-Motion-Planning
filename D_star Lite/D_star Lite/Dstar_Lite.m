@@ -1,18 +1,17 @@
- 
 %% D* Lite Path Planning
 % Yuan You
 % Dec. 1 2019
-
-clc;
-clear;
+clc
+clear
 close all
+scanner_size=10;
 plot_cover_flag=1;
 global accuracy;
 accuracy=10; % cm
 global robot_size;
 robot_size=45; % cm
 global side;
-side='R';
+side='R';%红方R蓝方B
 % input
 global s_start;
 global s_goal;
@@ -23,38 +22,19 @@ global k_m;
 global g;
 global c;
 global rhs;
-global key;
 global neighbour;
 global obstacle;
 global cover;
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INITIALIZATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-xmax=81*10/accuracy+1;%定义地图大小-行
-ymax=51*10/accuracy+1;%定义地图大小-列
-%%
-U=[];%优先级列表，用于存储待扩展的非一致节点(g(s)!=rhs(s))
-k_m=0;%记录最初起点到当前起始点的代价值
-g=[];%g和rhs表示节点s到目标点的最小代价的估计值
-rhs=[];%rhs是由其前向节点（起始点到当前点）的g值计算得到
-key=[];
-neighbour=[-1,0; % 8 direction
-           -1,1;
-           0,1;
-           1,1;
-           1,0;
-           1,-1;
-           0,-1;
-           -1,-1]; 
-g(1:xmax,1:ymax)=Inf;%遍历地图节点集S并初始化,这里注意行列对应的坐标是相反的
-rhs(1:xmax,1:ymax)=Inf;
-c(1:xmax,1:ymax)=0;
-for i=1:1:size(cover,1)
-    c(cover(i,1),cover(i,2))=Inf;
-end
+
+Initialize();
+
 %% 生成边界和障碍物
 boundary=GetBoundary();
 obstacle=GetObstacle();
 cover=GetObstacleCover();
-
+for i=1:1:size(cover,1)
+    c(cover(i,1),cover(i,2))=Inf;
+end
 % 更新活动区域
 F1.name="红方补给区";
 F1.x=2.3*10/accuracy+1;
@@ -96,8 +76,6 @@ F4.last_name=F4.name;
 F5.last_name=F5.name;
 F6.last_name=F6.name;
 %% %%%%%%%%%%%%%%%%%%%%%% SCANNER %%%%%%%%%%%%%%%%%%%%%%%%%
-% Half radius of the real SCANNER 
-scanner_size=10;
 scanner_region=[];
 for i=-scanner_size:1:scanner_size
     for j=-scanner_size:1:scanner_size
@@ -111,11 +89,11 @@ figure(1)
 hold on
 grid on;
 axis equal
-set(gcf, 'position', [0 0 18*(xmax+scanner_size) 18*(ymax+scanner_size)]);
+set(gcf, 'position', [0 0 16*(xmax) 16*(ymax)]);
 xticks(0:1:xmax+1)
 yticks(0:1:ymax+1)
-xlim([-1.0*scanner_size+floor(robot_size/2/accuracy),xmax+1.0*scanner_size-floor(robot_size/2/accuracy)])
-ylim([-1.0*scanner_size+floor(robot_size/2/accuracy),ymax+1.0*scanner_size-floor(robot_size/2/accuracy)])
+xlim([-0.0*scanner_size+floor(robot_size/2/accuracy)-2,xmax+0.0*scanner_size-floor(robot_size/2/accuracy)+3])
+ylim([-0.0*scanner_size+floor(robot_size/2/accuracy)-2,ymax+0.0*scanner_size-floor(robot_size/2/accuracy)+3])
 
 
 %%
@@ -207,14 +185,26 @@ while~isSamePosition(s_start,s_goal) && ~end_flag%s_start不等于s_goal
     set(start_point,'Position',[s_start(1)-robot_size/accuracy/2, s_start(2)-robot_size/accuracy/2, 2*robot_size/accuracy/2, 2*robot_size/accuracy/2],'Visible','on')
     set(scanner,'Position',[s_start(1)-1.05*scanner_size, s_start(2)-1.05*scanner_size, 2*1.05*scanner_size, 2*1.05*scanner_size],'Visible','on');
     %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NEW OBSTACLE/FREE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % 更新敌方机器人位置
-    enemy_robot_point=[27,9];
+   % 更新敌方机器人位置
+    try
+        set(enemy_cover,'visible','off')
+        set(enemy_robot,'visible','off')
+        c(enemy_cover(:,1),enemy_cover(:,2))=0;
+    catch
+    end
+    enemy_robot_point=[27,10];
     enemy_robot_cover=[];
     for i=enemy_robot_point(1)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2):1:enemy_robot_point(1)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2)
-        for j=enemy_robot_point(2)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2):1:enemy_robot_point(2)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2)
-            enemy_robot_cover=[enemy_robot_cover
-                                i,j];
-        end
+        enemy_robot_cover=[enemy_robot_cover
+                            i,enemy_robot_point(2)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2)];
+        enemy_robot_cover=[enemy_robot_cover
+                            i,enemy_robot_point(2)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2)];
+    end
+    for j=enemy_robot_point(2)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2):1:enemy_robot_point(2)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2)
+        enemy_robot_cover=[enemy_robot_cover
+                           enemy_robot_point(1)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2),j];
+        enemy_robot_cover=[enemy_robot_cover
+                           enemy_robot_point(1)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2),j];
     end
     if plot_cover_flag
         plot(enemy_robot_cover(:,1),enemy_robot_cover(:,2),'s','MarkerSize',accuracy,'MarkerFaceColor','c','MarkerEdgeColor','k');
@@ -259,9 +249,9 @@ while~isSamePosition(s_start,s_goal) && ~end_flag%s_start不等于s_goal
             continue
         end
         %已经检测过
-%         if c(s_scanning(1),s_scanning(2))==Inf
-%             continue
-%         end
+        if c(s_scanning(1),s_scanning(2))==Inf
+            continue
+        end
         [obstacle_detected_flag,obstacle_detected_index]=isInCloseList(s_scanning,enemy_robot_cover);
         if obstacle_detected_flag
             obstacle_detected_list=[obstacle_detected_list
@@ -385,6 +375,8 @@ while~isSamePosition(s_start,s_goal) && ~end_flag%s_start不等于s_goal
         end
     end
    %% replan
+%     rhs(s_start(1),s_start(2))=Inf;
+%     g(s_start(1),s_start(2))=Inf;
     ComputeShortestPath();%重新规划路径
     path=GeneratePath();%生成路径
     set(path_line,'Visible','off');

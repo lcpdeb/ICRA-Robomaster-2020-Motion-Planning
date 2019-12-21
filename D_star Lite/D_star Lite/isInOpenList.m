@@ -1,5 +1,6 @@
 function [flag,i]=isInOpenList(m,open)
 flag=0;
+i=0;
     if ~isempty(open)
         % search all the point in the OPEN LIST
         for i=1:length(open(:,1))

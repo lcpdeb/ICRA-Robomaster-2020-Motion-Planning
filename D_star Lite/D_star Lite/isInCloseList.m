@@ -1,5 +1,6 @@
 function [flag,i]=isInCloseList(m,close)
 flag=0;
+i=0;
     if ~isempty(close)
         % search all the point in the CLOSE LIST
         for i=1:length(close(:,1))

@@ -12,7 +12,7 @@ end
 for i3=1:(ymax+1)
     boundary=[boundary;[xmax+1 i3]]; % The bottom side of the map, the last row in the matrix
 end
-for i4=1:(xmax+1)
+for i4=1:(xmax)
     boundary=[boundary;[i4 ymax+1]]; % The right side of the map, the last column in the matrix
 end
 end

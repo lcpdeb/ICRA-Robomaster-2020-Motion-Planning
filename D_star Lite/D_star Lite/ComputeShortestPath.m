@@ -9,14 +9,14 @@ function ComputeShortestPath()
     global xmax;
     global ymax;
     [key_s_start(1),key_s_start(2)]=CalculateKey(s_start);
-    [key_TopKey(1),key_TopKey(2),~]=minKey(U);
+    [key_TopKey(1),key_TopKey(2),~]=GetMinKey(U);
     while(CompareKey(key_TopKey,key_s_start)||(rhs(s_start(1), s_start(2))>g(s_start(1), s_start(2))))%当优先列表中最优点（key最小）的key值小于起始点的key值或者起始点局部不一致（g和rhs不等）时
 
         % 此时U的首位是key值最小的元素
-        [k_old(1),k_old(2),minIndex]=minKey(U);
+        [key_old(1),key_old(2),minIndex]=GetMinKey(U);
         u=U(minIndex,:);
         
-        [k_new(1),k_new(2)]=CalculateKey(u);%计算该节点新key值     
+        [key_new(1),key_new(2)]=CalculateKey(u);%计算该节点新key值     
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         pause(0.0001)        
 %         % plot current node
@@ -33,9 +33,9 @@ function ComputeShortestPath()
 %         end
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        if(CompareKey(k_old,k_new))%如果该节点的key值大于原先的key值
-            %U.Update(u,k_new)
-            U(minIndex,3:4)=k_new;
+        if(CompareKey(key_old,key_new))%如果该节点的key值小于原先的key值
+            %U.Update(u,key_new)
+            U(minIndex,3:4)=key_new;
             
         elseif(g(u(1),u(2))>rhs(u(1),u(2)))%局部过一致，边缘代价函数值变低，代表网格上障碍物被清除或者搜索到一条更短捷径,开始扩展节点
             g(u(1),u(2))=rhs(u(1),u(2));%使局部一致
@@ -55,9 +55,11 @@ function ComputeShortestPath()
 %                 end
                 if ~isSamePosition(s_temp, s_goal)
                     if c(s_temp(1),s_temp(2))~=Inf
-                        c(s_temp(1),s_temp(2))=norm(s_temp(1:2)-u(1:2));
+                        cost=norm(s_temp(1:2)-u(1:2));
+                    else
+                        cost=Inf;
                     end
-                    rhs(s_temp(1),s_temp(2))=min(rhs(s_temp(1),s_temp(2)),c(s_temp(1),s_temp(2))+g(u(1),u(2)));
+                    rhs(s_temp(1),s_temp(2))=min(rhs(s_temp(1),s_temp(2)),cost+g(u(1),u(2)));
                 end
                 UpdateVertex(s_temp);%遍历前继节点集并更新前继节点的key值
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -94,6 +96,6 @@ function ComputeShortestPath()
 
         end
         [key_s_start(1),key_s_start(2)]=CalculateKey(s_start);
-        [key_TopKey(1),key_TopKey(2),~]=minKey(U);
+        [key_TopKey(1),key_TopKey(2),~]=GetMinKey(U);
     end
 end
