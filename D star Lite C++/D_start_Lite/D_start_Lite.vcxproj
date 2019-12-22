@@ -153,6 +153,7 @@
     <ClInclude Include="inc\isInList.h" />
     <ClInclude Include="inc\isSamePosition.h" />
     <ClInclude Include="inc\main.h" />
+    <ClInclude Include="inc\rhs_cal.h" />
     <ClInclude Include="inc\rtwtypes.h" />
     <ClInclude Include="inc\UpdateVertex.h" />
   </ItemGroup>
@@ -160,6 +161,7 @@
     <ClCompile Include="main.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\eigen-3.3.7;D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClCompile Include="src\rhs_cal.cpp" />
     <ClCompile Include="src\CalculateKey.cpp" />
     <ClCompile Include="src\CompareKey.cpp" />
     <ClCompile Include="src\ComputeShortestPath.cpp" />

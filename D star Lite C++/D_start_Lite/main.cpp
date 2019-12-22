@@ -22,8 +22,8 @@ MatrixXd path;
 /* Function Declarations */
 int main()
 {
-    s_goal << 80, 29;
-    s_start << 3, 26;
+    s_goal << 80, 50;
+    s_start << 3, 3;
 
 
     clock_t start_time, end_time;
@@ -36,16 +36,18 @@ int main()
 
     end_time = clock();
     totaltime = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    std::cout << "\n此程序的运行时间为" << totaltime << "秒" << std::endl;
+    
 
 
 
     s_last = s_start;
     std::cout << path << std::endl;
+    std::cout << std::endl;
+    std::cout << "\n此程序的运行时间为" << totaltime << "秒" << std::endl;
 
-    //std::ofstream path_file("pathcpp.txt");
-    //path_file << path;
-    //path_file.close();
+    std::ofstream path_file("pathcpp.txt");
+    path_file << path;
+    path_file.close();
 
     //std::ofstream rhs_file("rhscpp.txt");
     //rhs_file << rhs;

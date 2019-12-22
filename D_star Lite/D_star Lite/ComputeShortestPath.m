@@ -73,11 +73,11 @@ function ComputeShortestPath()
         else
             g_old=g(u(1),u(2));
             g(u(1),u(2))=Inf;%Óöµ½ÕÏ°­Îï
-            predecessor_list=[u(1:2)+neighbour(:,1:2)
+            predecessor=[u(1:2)+neighbour(:,1:2)
                               u(1:2)];
 
-            for j=1:size(predecessor_list,1)
-                s_temp=predecessor_list(j,:);
+            for j=1:size(predecessor,1)
+                s_temp=predecessor(j,:);
                 if s_temp(1)<1||s_temp(1)>xmax||s_temp(2)<1||s_temp(2)>ymax
                     continue
                 end

@@ -7,10 +7,12 @@
 #include "CompareKey.h"
 #include "isSamePosition.h"
 #include "UpdateVertex.h"
+#include "rhs_cal.h"
 
 /* Parameters Declarations */
 static int minIndex;
 static double cost;
+static double g_old;
 
 /* Matrix Declarations */
 static RowVector2d key_s_start;
@@ -20,6 +22,7 @@ static RowVector2d key_TopKey;
 static RowVector3d temp_key;
 static RowVector2d u;
 static RowVector2d s_temp;
+static Matrix<int, 9, 2> predecessor;
 
 /* Function Declarations */
 void ComputeShortestPath(void)
@@ -87,9 +90,33 @@ void ComputeShortestPath(void)
             }
 
         }
-        else
+        else //遇到障碍物
         {
-            //待补充
+            g_old = g(u(0), u(1));
+            g(u(0), u(1)) = INF;
+            predecessor << u(0) + neighbour(0, 0), u(1) + neighbour(0, 1),
+                           u(0) + neighbour(1, 0), u(1) + neighbour(1, 1),
+                           u(0) + neighbour(2, 0), u(1) + neighbour(2, 1),
+                           u(0) + neighbour(3, 0), u(1) + neighbour(3, 1),
+                           u(0) + neighbour(4, 0), u(1) + neighbour(4, 1),
+                           u(0) + neighbour(5, 0), u(1) + neighbour(5, 1),
+                           u(0) + neighbour(6, 0), u(1) + neighbour(6, 1),
+                           u(0) + neighbour(7, 0), u(1) + neighbour(7, 1),
+                           u(0)                  , u(1);
+            for (int i = 0; i < 9; i++)
+            {
+                s_temp << predecessor(i, 0), predecessor(i, 1);
+                //越界跳过
+                if (s_temp(0) < 1 || s_temp(0) > xmax || s_temp(1) < 1 || s_temp(1) > ymax)
+                {
+                    continue;
+                }
+                if (!isSamePosition(s_temp, s_goal))
+                {
+                    rhs_cal(s_temp);
+                }
+                UpdateVertex(s_temp);
+            }
         }
 
         key_s_start = CalculateKey(s_start);

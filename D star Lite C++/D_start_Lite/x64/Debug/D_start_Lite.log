@@ -1,10 +1,2 @@
-﻿  Initialize.cpp
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(51,24): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(57,26): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(57,15): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(66,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(67,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(80,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(81,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(94,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
+﻿  main.cpp
   D_start_Lite.vcxproj -> D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\x64\Debug\D_start_Lite.exe

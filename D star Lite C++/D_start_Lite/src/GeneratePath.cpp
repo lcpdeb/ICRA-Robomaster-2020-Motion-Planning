@@ -23,7 +23,7 @@ MatrixXd GeneratePath(void)
     while (!isSamePosition(s_next, s_goal))
     {
         //临时存储rhs用于比较
-        static double temp_rhs = INF;
+        static double min_rhs = INF;
         min_rhs_point = s_next;
 
         //选择s_start所有后继节点最小的rhs值坐标作为新的s_start
@@ -35,15 +35,15 @@ MatrixXd GeneratePath(void)
             {
                 continue;
             }
-            if (temp_rhs > rhs(s_temp(0), s_temp(1)))
+            if (min_rhs > rhs(s_temp(0), s_temp(1)))
             {
-                temp_rhs = rhs(s_temp(0), s_temp(1));
+                min_rhs = rhs(s_temp(0), s_temp(1));
                 min_rhs_point = s_temp;
 
             }
         }
         s_next = min_rhs_point;
-        if (temp_rhs == INF)
+        if (min_rhs == INF)
         {
             std::cout << "No Path to Goal!" << std::endl;
             break;
