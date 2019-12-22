@@ -352,7 +352,7 @@ while~isSamePosition(s_start,s_goal) && ~end_flag%s_start不等于s_goal
                     if c(v(1),v(2))==Inf %如果v是obstacle,则c_old是Inf
                         c_old=Inf;
                     else
-                        c_old=neighbour(k,3);%新obstacle说明以前是free，算c_old
+                        c_old=neighbour(k,1:2);%新obstacle说明以前是free，算c_old
                     end
                     % Update the edge cost c(u,v)
                     c_uv=Inf;%现在u是obstacle了，所以update c(u,v)=Inf;

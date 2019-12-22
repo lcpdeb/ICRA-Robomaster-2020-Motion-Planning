@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <fstream>
+#include <time.h>
 
 #include "Initialize.h"
 #include "ComputeShortestPath.h"
@@ -21,25 +22,38 @@ MatrixXd path;
 /* Function Declarations */
 int main()
 {
-    s_goal << 72, 42;
-    s_start << 11, 11;
+    s_goal << 80, 29;
+    s_start << 3, 26;
+
+
+    clock_t start_time, end_time;
+    double totaltime;
+    start_time = clock();
+
     Initialize();
     ComputeShortestPath();
     path = GeneratePath();
+
+    end_time = clock();
+    totaltime = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+    std::cout << "\n此程序的运行时间为" << totaltime << "秒" << std::endl;
+
+
+
     s_last = s_start;
     std::cout << path << std::endl;
 
-    std::ofstream path_file("pathcpp.txt");
-    path_file << path;
-    path_file.close();
+    //std::ofstream path_file("pathcpp.txt");
+    //path_file << path;
+    //path_file.close();
 
-    std::ofstream rhs_file("rhscpp.txt");
-    rhs_file << rhs;
-    rhs_file.close();
+    //std::ofstream rhs_file("rhscpp.txt");
+    //rhs_file << rhs;
+    //rhs_file.close();
 
-    std::ofstream c_file("ccpp.txt");
-    c_file << c;
-    c_file.close();
+    //std::ofstream c_file("ccpp.txt");
+    //c_file << c;
+    //c_file.close();
 
     return 0;
 }

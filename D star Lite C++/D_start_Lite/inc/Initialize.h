@@ -22,7 +22,7 @@ using namespace Eigen;
 
 
 /* Parameters Declarations */
-extern const double INF;
+extern const int INF;
 extern const int robot_size;
 extern const int accuracy;
 extern const int xmax;
@@ -32,15 +32,15 @@ extern double k_m;
 /* Matrix Declarations */
 extern Matrix<double, Dynamic, Dynamic> g;
 extern Matrix<double, Dynamic, Dynamic> rhs;
-extern Matrix<double, Dynamic, Dynamic> c;
+extern Matrix<int, Dynamic, Dynamic> c;
 extern Matrix<double, Dynamic, Dynamic> U;
-extern Matrix<int, 8, 2> neighbour;
+extern Matrix<double, 8, 3> neighbour;
 
 /* Function Declarations */
 extern void Initialize();
 extern void removeRow(MatrixXd& matrix, unsigned int rowToRemove);
 extern void removeColumn(MatrixXd& matrix, unsigned int colToRemove);
-extern void appendRow(MatrixXd& matrix, RowVectorXd& vector);
+extern void appendRow(MatrixXd& matrix, RowVectorXd vector);
 #endif
 
 /* End of code generation (Initialize.h) */

@@ -9,7 +9,7 @@ function rhs_cal(s)%计算节点rhs
     if ~isSamePosition(s,s_goal)%如果s不是目标点，取s节点后继节点中最小的rhs作为s节点的rhs值
         min_rhs=Inf;%用于对比找到min s'∈Succ(u)(c(u,s')+g(s'))
         for i=1:size(neighbour,1)
-            s_prime=s(1:2)+neighbour(i,:);
+            s_prime=s(1:2)+neighbour(i,1:2);
             if s_prime(1)<1||s_prime(1)>xmax||s_prime(2)<1||s_prime(2)>ymax
                 continue
             end

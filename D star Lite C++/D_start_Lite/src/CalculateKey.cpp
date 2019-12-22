@@ -6,6 +6,7 @@
 /* Parameters Declarations */
 static double SecondaryKey;
 static double PrimaryKey;
+static double h;
 
 /* Matrix Declarations */
 static RowVector2d key;
@@ -13,8 +14,9 @@ static RowVector2d key;
 /* Function Declarations */
 RowVector2d CalculateKey(RowVectorXd s)
 {
+    h = (s_start - s.head(2)).norm();
     SecondaryKey = fmin(g(s(0), s(1)), rhs(s(0), s(1)));
-    PrimaryKey = SecondaryKey + 0.99 * (s_start - s.head(2)).norm() + k_m;
+    PrimaryKey = SecondaryKey + 0.99 * h + k_m;
     key << PrimaryKey, SecondaryKey;
     return key;
 }

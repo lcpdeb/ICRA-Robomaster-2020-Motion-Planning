@@ -43,7 +43,7 @@ function ComputeShortestPath()
             
             % for all s ¡Ê Pred(u)
             for i=1:size(neighbour,1)
-                s_temp=u(1:2)+neighbour(i,:);
+                s_temp=u(1:2)+neighbour(i,1:2);
                 if s_temp(1)<1||s_temp(1)>xmax||s_temp(2)<1||s_temp(2)>ymax
                     continue
                 end
@@ -55,7 +55,7 @@ function ComputeShortestPath()
 %                 end
                 if ~isSamePosition(s_temp, s_goal)
                     if c(s_temp(1),s_temp(2))~=Inf
-                        cost=norm(s_temp(1:2)-u(1:2));
+                        cost=neighbour(i,3);
                     else
                         cost=Inf;
                     end

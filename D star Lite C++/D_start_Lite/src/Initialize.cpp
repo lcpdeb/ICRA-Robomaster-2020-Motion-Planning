@@ -17,7 +17,7 @@
 
 
 /* Parameters Declarations */
-const double INF = 999.0;
+const int INF = 999;
 const int robot_size = 45; //45cm as width
 const int accuracy = 10; //10cm as one grid
 const int xmax = 81 * 10 / accuracy + 1;
@@ -27,9 +27,9 @@ double k_m = 0;
 /* Matrix Declarations */
 Matrix<double, Dynamic, Dynamic> g;
 Matrix<double, Dynamic, Dynamic> rhs;
-Matrix<double, Dynamic, Dynamic> c;
+Matrix<int, Dynamic, Dynamic> c;
 Matrix<double, Dynamic, Dynamic> U;
-Matrix<int, 8, 2> neighbour;
+Matrix<double, 8, 3> neighbour;
 
 /* Function Definitions */
 void Initialize()
@@ -37,18 +37,18 @@ void Initialize()
     g.setConstant(xmax + 1, ymax + 1, INF); // operation cost g
     rhs.setConstant(xmax + 1, ymax + 1, INF); // total cost rhs
     c.setZero(xmax + 1, ymax + 1); // movement cost c, used to determine obstacles
-    neighbour << -1, 0, 
-                 -1, 1, 
-                  0, 1, 
-                  1, 1, 
-                  1, 0, 
-                  1,-1, 
-                  0,-1, 
-                 -1,-1;
+    neighbour << -1,  0, 1,
+                 -1,  1, 1.414213,
+                  0,  1, 1,
+                  1,  1, 1.414213,
+                  1,  0, 1,
+                  1, -1, 1.414213,
+                  0, -1, 1,
+                 -1, -1, 1.414213;
     //GetBoundary();
     GetObstacleCover();
     //标记障碍物
-    int row_num = cover.rows();
+    static int row_num = cover.rows();
     for (int i = 0; i < row_num; i++)
     { 
         c(cover(i, 0), cover(i, 1)) = INF;
@@ -89,7 +89,7 @@ void removeColumn(MatrixXd& matrix, unsigned int colToRemove)
 }
 
 //在矩阵最后一行插入向量
-void appendRow(MatrixXd& matrix, RowVectorXd& vector)
+void appendRow(MatrixXd& matrix, RowVectorXd vector)
 {
     unsigned int numRows = matrix.rows() + 1;
 

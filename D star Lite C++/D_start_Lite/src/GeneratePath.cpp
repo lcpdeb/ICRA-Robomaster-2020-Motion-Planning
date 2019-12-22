@@ -11,9 +11,9 @@
 
 /* Matrix Declarations */
 static MatrixXd path;
-static MatrixXd min_rhs_point;
+static RowVector2d min_rhs_point;
 static RowVector2d s_temp;
-static RowVectorXd s_next;
+static RowVector2d s_next;
 
 /* Function Declarations */
 MatrixXd GeneratePath(void)

@@ -10,9 +10,9 @@ static int isInListFlag;
 static int isInListIndex;
 
 /* Matrix Declarations */
-static RowVectorXi result_array;
+static RowVector2i result_array;
 static RowVector2d key;
-static RowVectorXd temp_row(4);
+static RowVector4d temp_row;
 
 /* Function Declarations */
 void UpdateVertex(RowVectorXd u)
@@ -40,7 +40,7 @@ void UpdateVertex(RowVectorXd u)
     {
         //计算key值后加入U
         key = CalculateKey(u);
-        temp_row << u(0), u(1), key;
+        temp_row << double(u(0)), double(u(1)), key;
         appendRow(U, temp_row);
     }
     else if ((g(u(0), u(1)) == rhs(u(0), u(1))) && isInListFlag)

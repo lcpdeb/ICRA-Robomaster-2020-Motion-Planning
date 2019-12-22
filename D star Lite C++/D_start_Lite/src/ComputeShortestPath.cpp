@@ -18,7 +18,7 @@ static RowVector2d key_old;
 static RowVector2d key_new;
 static RowVector2d key_TopKey;
 static RowVector3d temp_key;
-static RowVectorXd u;
+static RowVector2d u;
 static RowVector2d s_temp;
 
 /* Function Declarations */
@@ -33,14 +33,14 @@ void ComputeShortestPath(void)
     while (CompareKey(key_TopKey, key_s_start) || (rhs(s_start(0), s_start(1)) > g(s_start(0), s_start(1))))
     {
         //获取U中最小key和index
-        temp_key = GetMinKey(U);
+        temp_key = GetMinKey(U).array();
         //minIndex取第三位
         minIndex = temp_key(2);
-        //当前节点u为U中最小值
-        u = U.row(minIndex);
+        //当前节点u为U中key最小值
+        u = U.row(minIndex).head(2);
 
         //key_old取前两位
-        key_old = temp_key.head(2).array();
+        key_old = temp_key.head(2);
 
         //计算该节点u新key值
         key_new = CalculateKey(u);
@@ -74,7 +74,7 @@ void ComputeShortestPath(void)
                 {
                     if (c(s_temp(0), s_temp(1)) != INF)
                     {
-                        cost = (s_temp.head(2) - u.head(2)).norm();
+                        cost = neighbour(i, 2);
                     }
                     else
                     {
