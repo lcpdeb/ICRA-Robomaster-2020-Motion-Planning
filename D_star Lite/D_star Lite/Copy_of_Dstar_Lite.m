@@ -124,8 +124,8 @@ plot(boundary(:,1),boundary(:,2),'s','MarkerSize',accuracy','MarkerFaceColor','w
 load(fullfile('D:','OneDrive - The Ohio State University','ICRA-Robomaster-2020-Motion-Planning','D star Lite C++','D_start_Lite','ccpp.txt'))
 
 
-s_start=[3,3];
-s_goal=[80,50];
+s_start=[33,33];
+s_goal=[22,11];
 s_last=s_start;%当前位置点sl(下一时刻的位置点)视为新的起始点反复计算目标点sg与新的起始点间的最短路径
 rhs(s_goal(1),s_goal(2))=0;%目标点rhs置0
 U=[s_goal,norm(s_start-s_goal),0];%将目标点及其key值插入到优先列表U中
