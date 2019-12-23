@@ -7,13 +7,13 @@
 
 
 /* Matrix Declarations */
-static MatrixXi updated_region;
-static MatrixXi new_obstacle;
-static MatrixXi new_free;
 
 /* Function Declarations */
 MatrixXi UpdateRegion(Region region)
 {
+    MatrixXi updated_region;
+    MatrixXi new_obstacle;
+    MatrixXi new_free;
     //region状态机
     if (side == 'R')
     {
@@ -134,7 +134,7 @@ MatrixXi UpdateRegion(Region region)
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //更新region cover的cost
     //标记障碍物
-    static int row_num = new_obstacle.rows();
+    int row_num = new_obstacle.rows();
     for (int i = 0; i < row_num; i++)
     {
         c(new_obstacle(i, 0), new_obstacle(i, 1)) = INF;

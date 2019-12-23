@@ -8,28 +8,27 @@
 #include "isSamePosition.h"
 
 /* Parameters Declarations */
+static double min_rhs;
 
 /* Matrix Declarations */
 static MatrixXd path;
 static RowVector2d min_rhs_point;
 static RowVector2d s_temp;
-static RowVector2d s_next;
 
 /* Function Declarations */
 MatrixXd GeneratePath(void)
 {
-    s_next = s_start;
     path = s_start;
-    while (!isSamePosition(s_next, s_goal))
+    while (!isSamePosition(s_start, s_goal))
     {
         //临时存储rhs用于比较
-        static double min_rhs = INF;
-        min_rhs_point = s_next;
+        min_rhs = INF;
+        min_rhs_point = s_start;
 
         //选择s_start所有后继节点最小的rhs值坐标作为新的s_start
         for (int i = 0; i < 8; i++)
         {
-            s_temp << s_next(0) + neighbour(i, 0), s_next(1) + neighbour(i, 1);
+            s_temp << s_start(0) + neighbour(i, 0), s_start(1) + neighbour(i, 1);
             //越界跳过
             if (s_temp(0) < 1 || s_temp(0) > xmax || s_temp(1) < 1 || s_temp(1) > ymax)
             {
@@ -42,7 +41,7 @@ MatrixXd GeneratePath(void)
 
             }
         }
-        s_next = min_rhs_point;
+        s_start = min_rhs_point;
         if (min_rhs == INF)
         {
             std::cout << "No Path to Goal!" << std::endl;
@@ -50,8 +49,8 @@ MatrixXd GeneratePath(void)
         }
         else
         {
-            //移动到s_next并储存进path
-            appendRow(path, s_next);
+            //移动到s_start并储存进path
+            appendRow(path, s_start);
         }
 
     }

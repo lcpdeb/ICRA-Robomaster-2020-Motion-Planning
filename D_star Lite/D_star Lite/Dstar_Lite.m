@@ -184,196 +184,196 @@ while~isSamePosition(s_start,s_goal) && ~end_flag%s_start不等于s_goal
     goal_point=plot(s_goal(1),s_goal(2),'s','MarkerSize',accuracy,'MarkerFaceColor','g','MarkerEdgeColor','k');
     set(start_point,'Position',[s_start(1)-robot_size/accuracy/2, s_start(2)-robot_size/accuracy/2, 2*robot_size/accuracy/2, 2*robot_size/accuracy/2],'Visible','on')
     set(scanner,'Position',[s_start(1)-1.05*scanner_size, s_start(2)-1.05*scanner_size, 2*1.05*scanner_size, 2*1.05*scanner_size],'Visible','on');
-    %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NEW OBSTACLE/FREE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   % 更新敌方机器人位置
-    try
-        set(enemy_cover,'visible','off')
-        set(enemy_robot,'visible','off')
-        c(enemy_cover(:,1),enemy_cover(:,2))=0;
-    catch
-    end
-    enemy_robot_point=[27,10];
-    enemy_robot_cover=[];
-    for i=enemy_robot_point(1)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2):1:enemy_robot_point(1)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2)
-        enemy_robot_cover=[enemy_robot_cover
-                            i,enemy_robot_point(2)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2)];
-        enemy_robot_cover=[enemy_robot_cover
-                            i,enemy_robot_point(2)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2)];
-    end
-    for j=enemy_robot_point(2)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2):1:enemy_robot_point(2)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2)
-        enemy_robot_cover=[enemy_robot_cover
-                           enemy_robot_point(1)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2),j];
-        enemy_robot_cover=[enemy_robot_cover
-                           enemy_robot_point(1)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2),j];
-    end
-    if plot_cover_flag
-        plot(enemy_robot_cover(:,1),enemy_robot_cover(:,2),'s','MarkerSize',accuracy,'MarkerFaceColor','c','MarkerEdgeColor','k');
-    end
-    enemy_robot=rectangle('Position',[enemy_robot_point(1)-robot_size*(4/3)/accuracy/2, enemy_robot_point(2)-robot_size*(4/3)/accuracy/2, 2*robot_size*(4/3)/accuracy/2, 2*robot_size*(4/3)/accuracy/2],'FaceColor','b');
-    % 更新活动区域
-    F1.name="红方补给区";
-    F2.name="禁止射击区";
-    F3.name="红方回血区";
-    F4.name="蓝方回血区";
-    F5.name="蓝方补给区";
-    F6.name="禁止移动区";
-    updated_region=UpdateRegion(F1,F2,F3,F4,F5,F6);
-    % 储存状态
-    F1.last_name=F1.name;
-    F2.last_name=F2.name;
-    F3.last_name=F3.name;
-    F4.last_name=F4.name;
-    F5.last_name=F5.name;
-    F6.last_name=F6.name; 
-    if plot_cover_flag
-        for i=1:1:size(updated_region,1)
-            if updated_region(i,3)==1
-                plot(updated_region(i,1),updated_region(i,2),'s','MarkerSize',accuracy,'MarkerFaceColor','k','MarkerEdgeColor','k')
-            elseif updated_region(i,3)==0
-                plot(updated_region(i,1),updated_region(i,2),'s','MarkerSize',accuracy,'MarkerFaceColor','w','MarkerEdgeColor','w')
-            end
-        end
-    end
-    set(F1_text,'String',F1.name);
-    set(F2_text,'String',F2.name);
-    set(F3_text,'String',F3.name);
-    set(F4_text,'String',F4.name);
-    set(F5_text,'String',F5.name);
-    set(F6_text,'String',F6.name);
-    %% check Enemy Robot SLAM
-    obstacle_detected_list=[];
-    for i=1:size(scanner_region,1)
-        s_scanning=s_start+scanner_region(i,:);
-        %未越界
-        if s_scanning(1)<1||s_scanning(1)>xmax||s_scanning(2)<1||s_scanning(2)>ymax
-            continue
-        end
-        %已经检测过
-        if c(s_scanning(1),s_scanning(2))==Inf
-            continue
-        end
-        [obstacle_detected_flag,obstacle_detected_index]=isInCloseList(s_scanning,enemy_robot_cover);
-        if obstacle_detected_flag
-            obstacle_detected_list=[obstacle_detected_list
-                                enemy_robot_cover(obstacle_detected_index,:) 1];
-        end
-    end
-    %将扫描到的障碍物添加到updated region中
-    updated_region=[updated_region
-                    obstacle_detected_list];
-    %% check Update
-    if size(updated_region,1)
-        Update_Map_Flag=1;
-    else
-        Update_Map_Flag=0;%标记周边点状态是否发生变化
-    end
-    %% 
-    if Update_Map_Flag
-        remove_list=[];
-        for i=1:size(updated_region,1)%检测周边点情况
-            s_updated=updated_region(i,:);
-            %未越界
-            if s_updated(1)<1||s_updated(1)>xmax||s_updated(2)<1||s_updated(2)>ymax
-                continue
-            end
-
-            % Scanning map surround
-            % Scan graph fro changed edge cost
-            if s_updated(3)==1
-                NewObstacleFlag=true;
-                NewFreeFlag=false;
-                % 添加到remove list，最后一并删除
-                remove_list=[remove_list
-                             i];
-            elseif s_updated(3)==0
-                NewObstacleFlag=false;
-                NewFreeFlag=true;
-                % 添加到remove list，最后一并删除
-                remove_list=[remove_list
-                             i];
-            end
-            
-            % If any edge costs changed
-            % If new free scanned
-            if NewFreeFlag
-                c(s_updated(1),s_updated(2))=0;%检测到free，更新c
-                k_m=k_m+norm(s_last-s_start);%k_m更新
-                s_last=s_start;
-%                 new_free(NewFreeIndex,:)=[];
-%                 Update_Map_Flag=1;%周边点有更新
-                % for all directed edges(u,v) with changed edge costs
-                for k=1:size(neighbour,1)%更新周边点信息
-                    %         v        =    u      + neighbour
-                    s_surround_scanned = s_updated(1:2) + neighbour(k,1:2);
-                    if s_surround_scanned(1)<1||s_surround_scanned(1)>xmax||s_surround_scanned(2)<1||s_surround_scanned(2)>ymax
-                        continue
-                    end
-                    %%%%%%%%%%%%%%%%% edge direction from u to v %%%%%%%%%%%%%%%%%
-                    v=s_surround_scanned;
-                    u=s_updated(1:2);
-                    c_old=Inf;% new free 说明以前是 obstacle, c_old一定为Inf
-                    % Update the edge cost c(u,v)
-                    if c(v(1),v(2))==Inf % 如果v是obstacle,则c(u,v)为Inf
-                        c_uv=Inf;
-                    else
-                        c_uv=neighbour(k,3);
-                    end
-                    if c_old>c_uv
-                        if ~isSamePosition(u,s_goal)
-                            rhs(u(1),u(2))=min(rhs(u(1),u(2)),c_uv+g(v(1),v(2)));
-                        end
-    %                 elseif rhs(u(1),u(2))==c_old+g(v(1),v(2))
-                    elseif ~isSamePosition(u,s_goal)
-                            % rhs(u)=min s'∈Succ(u) (c(u,s')+g(s'))
-                            rhs_cal(u);
-                    end
-                    UpdateVertex(u);
-                    rhs_cal(v);
-                    UpdateVertex(v);
-                end
-            elseif NewObstacleFlag
-                c(s_updated(1),s_updated(2))=Inf;%检测到obstacle，更新c
-                k_m=k_m+norm(s_last-s_start);%k_m更新
-                s_last=s_start;
-%                 new_cover(NewObstacleIndex,:)=[];
-%                 Update_Map_Flag=1;%周边点有更新
-                % for all directed edges(u,v) with changed edge costs
-                for k=1:size(neighbour,1)%更新周边点信息
-                    %         v        =    u      + neighbour
-                    s_surround_scanned = s_updated(1:2) + neighbour(k,1:2);
-                    if s_surround_scanned(1)<1||s_surround_scanned(1)>xmax||s_surround_scanned(2)<1||s_surround_scanned(2)>ymax
-                        continue
-                    end
-                    %%%%%%%%%%%%%%%%% edge direction from u to v %%%%%%%%%%%%%%%%%
-                    v=s_surround_scanned;
-                    u=s_updated(1:2);
-                    % Update from both direction
-                    % c_old=c(u,v)
-                    if c(v(1),v(2))==Inf %如果v是obstacle,则c_old是Inf
-                        c_old=Inf;
-                    else
-                        c_old=neighbour(k,3);%新obstacle说明以前是free，算c_old
-                    end
-                    % Update the edge cost c(u,v)
-                    c_uv=Inf;%现在u是obstacle了，所以update c(u,v)=Inf;
-
-                    if c_old>c_uv
-                        if ~isSamePosition(u,s_goal)
-                            rhs(u(1),u(2))=min(rhs(u(1),u(2)),c_uv+g(v(1),v(2)));
-                        end
-    %                 elseif rhs(u(1),u(2))==c_old+g(v(1),v(2))
-                    elseif ~isSamePosition(u,s_goal)
-                        % rhs(u)=min s'∈Succ(u) (c(u,s')+g(s'))
-                        rhs_cal(u);
-
-                    end
-                    UpdateVertex(u);
-                    rhs_cal(v);
-                    UpdateVertex(v);
-                end
-            end
-        end
-    end
+%     %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NEW OBSTACLE/FREE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    % 更新敌方机器人位置
+%     try
+%         set(enemy_cover,'visible','off')
+%         set(enemy_robot,'visible','off')
+%         c(enemy_cover(:,1),enemy_cover(:,2))=0;
+%     catch
+%     end
+%     enemy_robot_point=[27,10];
+%     enemy_robot_cover=[];
+%     for i=enemy_robot_point(1)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2):1:enemy_robot_point(1)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2)
+%         enemy_robot_cover=[enemy_robot_cover
+%                             i,enemy_robot_point(2)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2)];
+%         enemy_robot_cover=[enemy_robot_cover
+%                             i,enemy_robot_point(2)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2)];
+%     end
+%     for j=enemy_robot_point(2)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2):1:enemy_robot_point(2)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2)
+%         enemy_robot_cover=[enemy_robot_cover
+%                            enemy_robot_point(1)-ceil(robot_size/accuracy/2)-floor(robot_size/accuracy/2),j];
+%         enemy_robot_cover=[enemy_robot_cover
+%                            enemy_robot_point(1)+ceil(robot_size/accuracy/2)+floor(robot_size/accuracy/2),j];
+%     end
+%     if plot_cover_flag
+%         plot(enemy_robot_cover(:,1),enemy_robot_cover(:,2),'s','MarkerSize',accuracy,'MarkerFaceColor','c','MarkerEdgeColor','k');
+%     end
+%     enemy_robot=rectangle('Position',[enemy_robot_point(1)-robot_size*(4/3)/accuracy/2, enemy_robot_point(2)-robot_size*(4/3)/accuracy/2, 2*robot_size*(4/3)/accuracy/2, 2*robot_size*(4/3)/accuracy/2],'FaceColor','b');
+%     % 更新活动区域
+%     F1.name="红方补给区";
+%     F2.name="禁止射击区";
+%     F3.name="红方回血区";
+%     F4.name="蓝方回血区";
+%     F5.name="蓝方补给区";
+%     F6.name="禁止移动区";
+%     updated_region=UpdateRegion(F1,F2,F3,F4,F5,F6);
+%     % 储存状态
+%     F1.last_name=F1.name;
+%     F2.last_name=F2.name;
+%     F3.last_name=F3.name;
+%     F4.last_name=F4.name;
+%     F5.last_name=F5.name;
+%     F6.last_name=F6.name; 
+%     if plot_cover_flag
+%         for i=1:1:size(updated_region,1)
+%             if updated_region(i,3)==1
+%                 plot(updated_region(i,1),updated_region(i,2),'s','MarkerSize',accuracy,'MarkerFaceColor','k','MarkerEdgeColor','k')
+%             elseif updated_region(i,3)==0
+%                 plot(updated_region(i,1),updated_region(i,2),'s','MarkerSize',accuracy,'MarkerFaceColor','w','MarkerEdgeColor','w')
+%             end
+%         end
+%     end
+%     set(F1_text,'String',F1.name);
+%     set(F2_text,'String',F2.name);
+%     set(F3_text,'String',F3.name);
+%     set(F4_text,'String',F4.name);
+%     set(F5_text,'String',F5.name);
+%     set(F6_text,'String',F6.name);
+%     %% check Enemy Robot SLAM
+%     obstacle_detected_list=[];
+%     for i=1:size(scanner_region,1)
+%         s_scanning=s_start+scanner_region(i,:);
+%         %未越界
+%         if s_scanning(1)<1||s_scanning(1)>xmax||s_scanning(2)<1||s_scanning(2)>ymax
+%             continue
+%         end
+%         %已经检测过
+%         if c(s_scanning(1),s_scanning(2))==Inf
+%             continue
+%         end
+%         [obstacle_detected_flag,obstacle_detected_index]=isInCloseList(s_scanning,enemy_robot_cover);
+%         if obstacle_detected_flag
+%             obstacle_detected_list=[obstacle_detected_list
+%                                 enemy_robot_cover(obstacle_detected_index,:) 1];
+%         end
+%     end
+%     %将扫描到的障碍物添加到updated region中
+%     updated_region=[updated_region
+%                     obstacle_detected_list];
+%     %% check Update
+%     if size(updated_region,1)
+%         Update_Map_Flag=1;
+%     else
+%         Update_Map_Flag=0;%标记周边点状态是否发生变化
+%     end
+%     %% 
+%     if Update_Map_Flag
+%         remove_list=[];
+%         for i=1:size(updated_region,1)%检测周边点情况
+%             s_updated=updated_region(i,:);
+%             %未越界
+%             if s_updated(1)<1||s_updated(1)>xmax||s_updated(2)<1||s_updated(2)>ymax
+%                 continue
+%             end
+% 
+%             % Scanning map surround
+%             % Scan graph fro changed edge cost
+%             if s_updated(3)==1
+%                 NewObstacleFlag=true;
+%                 NewFreeFlag=false;
+%                 % 添加到remove list，最后一并删除
+%                 remove_list=[remove_list
+%                              i];
+%             elseif s_updated(3)==0
+%                 NewObstacleFlag=false;
+%                 NewFreeFlag=true;
+%                 % 添加到remove list，最后一并删除
+%                 remove_list=[remove_list
+%                              i];
+%             end
+%             
+%             % If any edge costs changed
+%             % If new free scanned
+%             if NewFreeFlag
+%                 c(s_updated(1),s_updated(2))=0;%检测到free，更新c
+%                 k_m=k_m+norm(s_last-s_start);%k_m更新
+%                 s_last=s_start;
+% %                 new_free(NewFreeIndex,:)=[];
+% %                 Update_Map_Flag=1;%周边点有更新
+%                 % for all directed edges(u,v) with changed edge costs
+%                 for k=1:size(neighbour,1)%更新周边点信息
+%                     %         v        =    u      + neighbour
+%                     s_surround_scanned = s_updated(1:2) + neighbour(k,1:2);
+%                     if s_surround_scanned(1)<1||s_surround_scanned(1)>xmax||s_surround_scanned(2)<1||s_surround_scanned(2)>ymax
+%                         continue
+%                     end
+%                     %%%%%%%%%%%%%%%%% edge direction from u to v %%%%%%%%%%%%%%%%%
+%                     v=s_surround_scanned;
+%                     u=s_updated(1:2);
+%                     c_old=Inf;% new free 说明以前是 obstacle, c_old一定为Inf
+%                     % Update the edge cost c(u,v)
+%                     if c(v(1),v(2))==Inf % 如果v是obstacle,则c(u,v)为Inf
+%                         c_uv=Inf;
+%                     else
+%                         c_uv=neighbour(k,3);
+%                     end
+%                     if c_old>c_uv
+%                         if ~isSamePosition(u,s_goal)
+%                             rhs(u(1),u(2))=min(rhs(u(1),u(2)),c_uv+g(v(1),v(2)));
+%                         end
+%     %                 elseif rhs(u(1),u(2))==c_old+g(v(1),v(2))
+%                     elseif ~isSamePosition(u,s_goal)
+%                             % rhs(u)=min s'∈Succ(u) (c(u,s')+g(s'))
+%                             rhs_cal(u);
+%                     end
+%                     UpdateVertex(u);
+%                     rhs_cal(v);
+%                     UpdateVertex(v);
+%                 end
+%             elseif NewObstacleFlag
+%                 c(s_updated(1),s_updated(2))=Inf;%检测到obstacle，更新c
+%                 k_m=k_m+norm(s_last-s_start);%k_m更新
+%                 s_last=s_start;
+% %                 new_cover(NewObstacleIndex,:)=[];
+% %                 Update_Map_Flag=1;%周边点有更新
+%                 % for all directed edges(u,v) with changed edge costs
+%                 for k=1:size(neighbour,1)%更新周边点信息
+%                     %         v        =    u      + neighbour
+%                     s_surround_scanned = s_updated(1:2) + neighbour(k,1:2);
+%                     if s_surround_scanned(1)<1||s_surround_scanned(1)>xmax||s_surround_scanned(2)<1||s_surround_scanned(2)>ymax
+%                         continue
+%                     end
+%                     %%%%%%%%%%%%%%%%% edge direction from u to v %%%%%%%%%%%%%%%%%
+%                     v=s_surround_scanned;
+%                     u=s_updated(1:2);
+%                     % Update from both direction
+%                     % c_old=c(u,v)
+%                     if c(v(1),v(2))==Inf %如果v是obstacle,则c_old是Inf
+%                         c_old=Inf;
+%                     else
+%                         c_old=neighbour(k,3);%新obstacle说明以前是free，算c_old
+%                     end
+%                     % Update the edge cost c(u,v)
+%                     c_uv=Inf;%现在u是obstacle了，所以update c(u,v)=Inf;
+% 
+%                     if c_old>c_uv
+%                         if ~isSamePosition(u,s_goal)
+%                             rhs(u(1),u(2))=min(rhs(u(1),u(2)),c_uv+g(v(1),v(2)));
+%                         end
+%     %                 elseif rhs(u(1),u(2))==c_old+g(v(1),v(2))
+%                     elseif ~isSamePosition(u,s_goal)
+%                         % rhs(u)=min s'∈Succ(u) (c(u,s')+g(s'))
+%                         rhs_cal(u);
+% 
+%                     end
+%                     UpdateVertex(u);
+%                     rhs_cal(v);
+%                     UpdateVertex(v);
+%                 end
+%             end
+%         end
+%     end
    %% replan
 %     rhs(s_start(1),s_start(2))=Inf;
 %     g(s_start(1),s_start(2))=Inf;

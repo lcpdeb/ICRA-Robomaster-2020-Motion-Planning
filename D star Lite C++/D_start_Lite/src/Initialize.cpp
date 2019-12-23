@@ -24,7 +24,7 @@ const int accuracy = 10; //10cm as one grid
 const int xmax = 81 * 10 / accuracy + 1;
 const int ymax = 51 * 10 / accuracy + 1;
 double k_m = 0;
-Region region;
+extern Region region;//调用
 
 /* Matrix Declarations */
 Matrix<double, Dynamic, Dynamic> g;
@@ -209,11 +209,6 @@ void Initialize()
     { 
         c(cover(i, 0), cover(i, 1)) = INF;
     }
-    //设置目标点rhs为0
-    rhs(s_goal(0), s_goal(1)) = 0;
-    //初始化U
-    U.setZero(1, 4);
-    U << s_goal(0), s_goal(1), (s_start - s_goal).norm(), 0;
 }
 
 //移除矩阵中指定行

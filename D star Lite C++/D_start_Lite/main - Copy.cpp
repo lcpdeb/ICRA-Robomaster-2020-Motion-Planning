@@ -18,7 +18,7 @@ static int start[2];
 char side;
 Region region;
 
-/* Matrix Declarations */
+/* Matrix Declarations */ 
 RowVector2d s_start;
 RowVector2d s_goal;
 RowVector2d s_last;
@@ -48,12 +48,6 @@ int main()
 
     s_last = s_start;
     Initialize();
-
-    //设置目标点rhs为0
-    rhs(s_goal(0), s_goal(1)) = 0;
-    //初始化U
-    U.setZero(1, 4);
-    U << s_goal(0), s_goal(1), (s_start - s_goal).norm(), 0;
     ComputeShortestPath();
     path = GeneratePath();
 
