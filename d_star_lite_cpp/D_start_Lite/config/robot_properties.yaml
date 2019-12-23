@@ -1,0 +1,9 @@
+# This YAML file is for storing some parameters about the robot and the battlefield
+properties: {
+    INF: 0,
+    robot_size: 0,
+    accuracy: 0,
+    xmax: 0,
+    ymax: 0,
+    k_m: 0, # Please add comments about k_m here
+}
