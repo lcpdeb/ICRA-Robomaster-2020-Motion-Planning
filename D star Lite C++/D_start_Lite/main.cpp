@@ -10,11 +10,13 @@
 #include "ComputeShortestPath.h"
 #include "GeneratePath.h"
 #include "isSamePosition.h"
+#include "UpdateRegion.h"
 
 
 /* Parameters Declarations */
 static int goal[2];
 static int start[2];
+char side;
 
 /* Matrix Declarations */
 RowVector2d s_start;
@@ -25,6 +27,9 @@ MatrixXd path;
 /* Function Declarations */
 int main()
 {
+    side = 'B';
+    std::cout << "Select your side(R or B): " << std::endl;
+    std::cin >> side;
     std::cout << "Select a start point: " << std::endl;
     std::cin >> start[0] >> start[1];
     std::cout << "Select a goal point: " << std::endl;
@@ -56,8 +61,8 @@ int main()
     path_file << path;
     path_file.close();
 
-    ////Move to next node(Update Robot Position)
-    //s_start = path.row(2);
+    //Move to next node(Update Robot Position)
+    s_start = path.row(2);
     //while (!isSamePosition(s_start, s_goal))
     //{
     //    //Update Region

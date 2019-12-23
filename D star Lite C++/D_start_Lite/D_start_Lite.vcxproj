@@ -103,6 +103,7 @@
       <AdditionalIncludeDirectories>D:\eigen-3.3.7;D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>MaxSpeed</Optimization>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -155,6 +156,7 @@
     <ClInclude Include="inc\main.h" />
     <ClInclude Include="inc\rhs_cal.h" />
     <ClInclude Include="inc\rtwtypes.h" />
+    <ClInclude Include="inc\UpdateRegion.h" />
     <ClInclude Include="inc\UpdateVertex.h" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +174,7 @@
     <ClCompile Include="src\Initialize.cpp" />
     <ClCompile Include="src\isInList.cpp" />
     <ClCompile Include="src\isSamePosition.cpp" />
+    <ClCompile Include="src\UpdateRegion.cpp" />
     <ClCompile Include="src\UpdateVertex.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

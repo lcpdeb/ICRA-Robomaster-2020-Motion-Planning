@@ -35,12 +35,15 @@ extern Matrix<double, Dynamic, Dynamic> rhs;
 extern Matrix<int, Dynamic, Dynamic> c;
 extern Matrix<double, Dynamic, Dynamic> U;
 extern Matrix<double, 8, 3> neighbour;
+extern MatrixXi updated_region;
 
 /* Function Declarations */
 extern void Initialize();
 extern void removeRow(MatrixXd& matrix, unsigned int rowToRemove);
 extern void removeColumn(MatrixXd& matrix, unsigned int colToRemove);
 extern void appendRow(MatrixXd& matrix, RowVectorXd vector);
+extern void appendCol(MatrixXi& matrix, VectorXi vector);
+extern void MatrixVerticalSplice(MatrixXi& matrix1, MatrixXi matrix2);
 #endif
 
 /* End of code generation (Initialize.h) */

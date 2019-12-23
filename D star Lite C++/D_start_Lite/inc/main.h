@@ -6,6 +6,7 @@
 using namespace Eigen;
 
 /* Parameters Declarations */
+extern char side;
 
 /* Matrix Declarations */
 extern RowVector2d s_start;

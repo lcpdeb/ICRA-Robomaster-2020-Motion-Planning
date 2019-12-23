@@ -237,7 +237,7 @@ for i=1:1:size(new_obstacle,1)
     c(new_obstacle(i,1),new_obstacle(i,2))=Inf;
 end
 for i=1:1:size(new_free,1)
-    c(new_free(i,1),new_free(i,2))=Inf;
+    c(new_free(i,1),new_free(i,2))=0;
 end
 updated_region=[new_obstacle ones(size(new_obstacle,1),1)
                new_free zeros(size(new_free,1),1)];
