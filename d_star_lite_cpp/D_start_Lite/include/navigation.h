@@ -9,20 +9,6 @@
 #include "std_msgs/Int8.h"
 
 // Include header files, use them as functions
-#include "CalculateKey.h"
-#include "CompareKey.h"
-#include "ComputeShortestPath.h"
-#include "GeneratePath.h"
-#include "GetBoundary.h"
-#include "GetMinKey.h"
-#include "GetObstacleCover.h"
-#include "Initialize.h"
-#include "isInList.h"
-#include "isSamePosition.h"
-#include "rhs_cal.h"
-#include "rtwtypes.h"
-#include "UpdateRegion.h"
-#include "UpdateVertex.h"
 
 #include <stddef.h>
 #include <stdlib.h>
@@ -35,7 +21,6 @@
 using namespace Eigen;
 using namespace std;
 
-typedef Matrix<double, 8, 3> Matrix83;
 
 class Navigation
 {
@@ -47,28 +32,14 @@ private:
   geometry_msgs::Vector3Stamped cmd_msg;
 
   /* Parameters Declarations */
-  // Some of this can be included into the yaml file
-  /*extern const int INF;
-  extern const int robot_size;
-  extern const int accuracy;
-  extern const int xmax;
-  extern const int ymax;
-  extern double k_m;*/
 
   /* Matrix Declarations */
-  // What is extern here? Seems to be redundant
-  /* extern Matrix<double, Dynamic, Dynamic> g;
-  extern Matrix<double, Dynamic, Dynamic> rhs;
-  extern Matrix<int, Dynamic, Dynamic> c;
-  extern Matrix<double, Dynamic, Dynamic> U;
-  extern Matrix<double, 8, 3> neighbour;
-  extern MatrixXi updated_region; */
 
   YAML::Node properties; // Perpare for loading param
   string properties_file_name;
-  MatrixXd g, rhs, U;
-  MatrixXi c, update_region;
-  Matrix83 neighbour;
+
+  /* Function Declarations */
+
 
 
 public:

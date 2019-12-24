@@ -100,7 +100,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\eigen-3.3.7;D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\d_star_lite_cpp\D_start_Lite\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\eigen-3.3.7;D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\d_star_lite_cpp\D_start_Lite\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>MaxSpeed</Optimization>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
@@ -143,6 +143,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\CalculateKey.h" />
+    <ClInclude Include="include\CompareKey.h" />
+    <ClInclude Include="include\ComputeShortestPath.h" />
+    <ClInclude Include="include\GeneratePath.h" />
+    <ClInclude Include="include\GetBoundary.h" />
+    <ClInclude Include="include\GetMinKey.h" />
+    <ClInclude Include="include\GetObstacleCover.h" />
+    <ClInclude Include="include\Initialize.h" />
+    <ClInclude Include="include\isInList.h" />
+    <ClInclude Include="include\isSamePosition.h" />
+    <ClInclude Include="include\main.h" />
+    <ClInclude Include="include\rhs_cal.h" />
+    <ClInclude Include="include\rtwtypes.h" />
+    <ClInclude Include="include\test.h" />
+    <ClInclude Include="include\test_class.h" />
+    <ClInclude Include="include\UpdateEdgeCost.h" />
+    <ClInclude Include="include\UpdateRegion.h" />
+    <ClInclude Include="include\UpdateVertex.h" />
     <ClInclude Include="inc\CalculateKey.h" />
     <ClInclude Include="inc\CompareKey.h" />
     <ClInclude Include="inc\ComputeShortestPath.h" />
@@ -175,6 +193,8 @@
     <ClCompile Include="src\Initialize.cpp" />
     <ClCompile Include="src\isInList.cpp" />
     <ClCompile Include="src\isSamePosition.cpp" />
+    <ClCompile Include="src\test.cpp" />
+    <ClCompile Include="src\test_class.cpp" />
     <ClCompile Include="src\UpdateEdgeCost.cpp" />
     <ClCompile Include="src\UpdateRegion.cpp" />
     <ClCompile Include="src\UpdateVertex.cpp" />
