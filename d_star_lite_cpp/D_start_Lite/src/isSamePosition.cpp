@@ -8,7 +8,7 @@
 /* Matrix Declarations */
 
 /* Function Declarations */
-bool isSamePosition(RowVectorXd a, RowVectorXd b)
+bool isSamePosition(RowVectorXi a, RowVectorXi b)
 {
     if (a(0) == b(0) && a(1) == b(1))
     {

@@ -7,5 +7,5 @@
 /* Matrix Declarations */
 
 /* Function Declarations */
-extern MatrixXd GeneratePath(void);
+extern MatrixXi GeneratePath(void);
 #endif

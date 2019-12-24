@@ -1,15 +1,6 @@
 ﻿  main.cpp
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\main.cpp(53,26): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\main.cpp(53,15): warning C4244: 'argument': conversion from 'double' to 'Eigen::Index', possible loss of data
-  Initialize.cpp
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(207,24): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(217,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(218,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(231,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(232,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(245,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(255,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(265,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\src\Initialize.cpp(266,26): warning C4244: 'initializing': conversion from 'Eigen::Index' to 'unsigned int', possible loss of data
+  UpdateEdgeCost.cpp
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\d_star_lite_cpp\D_start_Lite\src\UpdateEdgeCost.cpp(40,48): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\d_star_lite_cpp\D_start_Lite\src\UpdateEdgeCost.cpp(40,80): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
   Generating Code...
-  D_start_Lite.vcxproj -> D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\D star Lite C++\D_start_Lite\x64\Debug\D_start_Lite.exe
+  D_start_Lite.vcxproj -> D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\d_star_lite_cpp\D_start_Lite\x64\Debug\D_start_Lite.exe

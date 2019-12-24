@@ -8,6 +8,6 @@
 /* Matrix Declarations */
 
 /* Function Declarations */
-extern void rhs_cal(RowVectorXd s);
+extern void rhs_cal(RowVectorXi s);
 
 #endif

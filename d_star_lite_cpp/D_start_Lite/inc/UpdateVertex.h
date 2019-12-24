@@ -8,5 +8,5 @@
 /* Matrix Declarations */
 
 /* Function Declarations */
-extern void UpdateVertex(RowVectorXd u);
+extern void UpdateVertex(RowVectorXi u);
 #endif

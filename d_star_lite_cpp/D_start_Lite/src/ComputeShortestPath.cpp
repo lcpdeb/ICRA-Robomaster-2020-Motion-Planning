@@ -20,8 +20,8 @@ static RowVector2d key_old;
 static RowVector2d key_new;
 static RowVector2d key_TopKey;
 static RowVector3d temp_key;
-static RowVector2d u;
-static RowVector2d s_temp;
+static RowVector2i u;
+static RowVector2i s_temp;
 static Matrix<int, 9, 2> predecessor;
 
 /* Function Declarations */
@@ -40,7 +40,7 @@ void ComputeShortestPath(void)
         //minIndex取第三位
         minIndex = temp_key(2);
         //当前节点u为U中key最小值
-        u = U.row(minIndex).head(2);
+        u = U.row(minIndex).head(2).cast<int>();
 
         //key_old取前两位
         key_old = temp_key.head(2);

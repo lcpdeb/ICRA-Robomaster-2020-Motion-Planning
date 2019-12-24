@@ -14,7 +14,7 @@ static RowVector2i isInListInfo;
 
 /* Function Declarations */
 //查找节点是否在list中，返回flag和index
-RowVector2i isInList(RowVectorXd u, MatrixXd list)
+RowVector2i isInList(RowVectorXi u, MatrixXd list)
 {
     flag = 0;
     index = 0;
@@ -24,7 +24,7 @@ RowVector2i isInList(RowVectorXd u, MatrixXd list)
     {
         for (index = 0; index < list_length; index++)
         {
-            if (isSamePosition(list.row(index).array(), u.head(2)))
+            if (isSamePosition(list.row(index).array().cast<int>(), u.head(2)))
             {
                 flag = 1;
                 isInListInfo << flag, index;
