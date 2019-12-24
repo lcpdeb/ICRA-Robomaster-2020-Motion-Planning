@@ -33,6 +33,10 @@ private:
 
   /* Parameters Declarations */
 
+
+
+
+
   /* Matrix Declarations */
 
   YAML::Node properties; // Perpare for loading param
@@ -53,3 +57,11 @@ public:
   void GetPosition(const geometry_msgs::Vector3Stamped::ConstPtr &terminal);
   void GetTerminal(const geometry_msgs::Vector3Stamped::ConstPtr &terminal);
 }
+
+
+/* Parameters Declarations */
+extern char side;
+
+/* Matrix Declarations */
+extern RowVector2i s_start;
+extern RowVector2i s_goal;

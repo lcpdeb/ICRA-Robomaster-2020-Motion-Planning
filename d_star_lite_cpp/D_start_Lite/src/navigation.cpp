@@ -14,17 +14,19 @@ int main(int argc, char **argv)
     nav.Loop();
 }
 
+/* Parameters Declarations */
+char side;
+Region region;
+
+/* Matrix Declarations */
+RowVector2i s_start;
+RowVector2i s_goal;
+RowVector2i s_last;
+MatrixXi path;
+
 Navigation::Navigation() : nh("~")
 {
-    /* Parameters Declarations */
-    char side;
-    Region region;
 
-    /* Matrix Declarations */
-    RowVector2i s_start;
-    RowVector2i s_goal;
-    RowVector2i s_last;
-    MatrixXi path;
 
     // Load param from YAML file
     Navigation::LoadParam<string>("robot_properties", properties_file_name);
