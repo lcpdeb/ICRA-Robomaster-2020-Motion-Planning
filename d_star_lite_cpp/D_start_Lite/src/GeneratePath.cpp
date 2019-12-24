@@ -11,12 +11,12 @@
 static double min_rhs;
 
 /* Matrix Declarations */
-static MatrixXd path;
-static RowVector2d min_rhs_point;
-static RowVector2d s_temp;
+static MatrixXi path;
+static RowVector2i min_rhs_point;
+static RowVector2i s_temp;
 
 /* Function Declarations */
-MatrixXd GeneratePath(void)
+MatrixXi GeneratePath(void)
 {
     path = s_start;
     while (!isSamePosition(s_start, s_goal))
@@ -38,7 +38,6 @@ MatrixXd GeneratePath(void)
             {
                 min_rhs = rhs(s_temp(0), s_temp(1));
                 min_rhs_point = s_temp;
-
             }
         }
         s_start = min_rhs_point;
@@ -50,7 +49,7 @@ MatrixXd GeneratePath(void)
         else
         {
             //移动到s_start并储存进path
-            appendRow(path, s_start);
+            appendPath(path, s_start);
         }
 
     }

@@ -8,6 +8,6 @@
 /* Matrix Declarations */
 
 /* Function Declarations */
-extern RowVector2d CalculateKey(RowVectorXd s);
+extern RowVector2d CalculateKey(RowVectorXi s);
 
 #endif

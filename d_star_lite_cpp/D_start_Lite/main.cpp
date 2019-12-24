@@ -11,6 +11,7 @@
 #include "GeneratePath.h"
 #include "isSamePosition.h"
 #include "UpdateRegion.h"
+#include "UpdateEdgeCost.h"
 
 /* Parameters Declarations */
 static int goal[2];
@@ -19,10 +20,10 @@ char side;
 Region region;
 
 /* Matrix Declarations */
-RowVector2d s_start;
-RowVector2d s_goal;
-RowVector2d s_last;
-MatrixXd path;
+RowVector2i s_start;
+RowVector2i s_goal;
+RowVector2i s_last;
+MatrixXi path;
 
 /* Function Declarations */
 int main()
@@ -38,8 +39,9 @@ int main()
     //s_goal << goal[0], goal[1];
     //s_start << start[0], start[1];
 
+    s_start << 80, 50;
     s_goal << 3, 3;
-    s_start << 78, 48;
+    
 
     //看看时间
     clock_t start_time, end_time;
@@ -87,7 +89,6 @@ int main()
         region.F6.name = 禁止移动区;
         //更新region
         updated_region = UpdateRegion(region);
-        std::cout << "updated_regionis " << updated_region << std::endl;
         //储存region状态机
         region.F1.last_name = region.F1.name;
         region.F2.last_name = region.F2.name;
@@ -100,22 +101,32 @@ int main()
 
 
 
+        //Update Map
+        if (updated_region.rows())
+        {
+            //更新k_m
+            k_m = k_m + (s_last - s_start).cast<double>().norm();
+            s_last = s_start;
+            UpdateEdgeCost(updated_region);
+        }
+
         //Replan
         ComputeShortestPath();
         path = GeneratePath();
+
         //Move to next node(Update Robot Position)
         s_start = path.row(1);
         std:: cout<< "current location is " << s_start << std::endl;
     }
 
-    
 
 
 
 
-    //std::ofstream rhs_file("rhscpp.txt");
-    //rhs_file << rhs;
-    //rhs_file.close();
+
+    std::ofstream rhs_file("rhscpp.txt");
+    rhs_file << rhs;
+    rhs_file.close();
 
     //std::ofstream c_file("ccpp.txt");
     //c_file << c;

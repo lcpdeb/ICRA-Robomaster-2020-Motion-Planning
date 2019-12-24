@@ -8,6 +8,6 @@
 /* Matrix Declarations */
 
 /* Function Declarations */
-extern bool isSamePosition(RowVectorXd a, RowVectorXd b);
+extern bool isSamePosition(RowVectorXi a, RowVectorXi b);
 #endif
 

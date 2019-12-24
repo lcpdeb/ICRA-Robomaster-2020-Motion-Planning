@@ -8,6 +8,6 @@
 /* Matrix Declarations */
 
 /* Function Declarations */
-extern RowVector2i isInList(RowVectorXd u, MatrixXd list);
+extern RowVector2i isInList(RowVectorXi u, MatrixXd list);
 
 #endif

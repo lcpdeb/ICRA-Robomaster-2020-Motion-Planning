@@ -41,6 +41,7 @@ extern MatrixXi updated_region;
 extern void Initialize();
 extern void removeRow(MatrixXd& matrix, unsigned int rowToRemove);
 extern void removeColumn(MatrixXd& matrix, unsigned int colToRemove);
+extern void appendPath(MatrixXi& matrix, RowVectorXi next_node);
 extern void appendRow(MatrixXd& matrix, RowVectorXd vector);
 extern void appendCol(MatrixXi& matrix, VectorXi vector);
 extern void MatrixVerticalSplice(MatrixXi& matrix1, MatrixXi matrix2);

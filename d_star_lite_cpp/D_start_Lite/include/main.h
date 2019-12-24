@@ -9,8 +9,8 @@ using namespace Eigen;
 extern char side;
 
 /* Matrix Declarations */
-extern RowVector2d s_start;
-extern RowVector2d s_goal;
+extern RowVector2i s_start;
+extern RowVector2i s_goal;
 
 /* Function Declarations */
 

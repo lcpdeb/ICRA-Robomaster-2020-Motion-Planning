@@ -239,6 +239,17 @@ void removeColumn(MatrixXd& matrix, unsigned int colToRemove)
     matrix.conservativeResize(numRows, numCols);
 }
 
+//path专用
+void appendPath(MatrixXi& matrix, RowVectorXi next_node)
+{
+    unsigned int numRows = matrix.rows() + 1;
+
+    matrix.conservativeResize(numRows, NoChange);
+
+    matrix.row(numRows - 1) = next_node;
+}
+
+
 //在矩阵最后一行插入向量
 void appendRow(MatrixXd& matrix, RowVectorXd vector)
 {
