@@ -8,6 +8,22 @@
 #include "std_msgs/Float32.h"
 #include "std_msgs/Int8.h"
 
+// Include header files, use them as functions
+#include "CalculateKey.h"
+#include "CompareKey.h"
+#include "ComputeShortestPath.h"
+#include "GeneratePath.h"
+#include "GetBoundary.h"
+#include "GetMinKey.h"
+#include "GetObstacleCover.h"
+#include "Initialize.h"
+#include "isInList.h"
+#include "isSamePosition.h"
+#include "rhs_cal.h"
+#include "rtwtypes.h"
+#include "UpdateRegion.h"
+#include "UpdateVertex.h"
+
 #include <stddef.h>
 #include <stdlib.h>
 #include <math.h>

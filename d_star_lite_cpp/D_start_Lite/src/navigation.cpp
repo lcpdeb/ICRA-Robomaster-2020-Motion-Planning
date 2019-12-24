@@ -20,4 +20,6 @@ Navigation::Navigation() : nh("~")
     
     Navigation::LoadRobotProperties();
     Navigation::InitCmdMsg();
+    Navigation::GetPosition(const geometry_msgs::Vector3Stamped::ConstPtr &terminal);
+    Navigation::GetTerminal(const geometry_msgs::Vector3Stamped::ConstPtr &terminal);
 }
