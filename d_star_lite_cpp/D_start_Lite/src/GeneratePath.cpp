@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdio.h>
 
-#include "navigation.h"
+#include "test_class.h"
 #include "Initialize.h"
 #include "GeneratePath.h"
 #include "isSamePosition.h"

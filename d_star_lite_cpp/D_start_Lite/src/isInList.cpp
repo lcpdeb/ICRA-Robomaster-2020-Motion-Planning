@@ -1,5 +1,5 @@
 /* Include files */
-#include "navigation.h"
+#include "test_class.h"
 #include "Initialize.h"
 #include "isInList.h"
 #include "isSamePosition.h"

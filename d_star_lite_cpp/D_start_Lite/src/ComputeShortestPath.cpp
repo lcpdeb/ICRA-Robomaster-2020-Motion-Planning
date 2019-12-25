@@ -1,5 +1,5 @@
 /* Include files */
-#include "navigation.h"
+#include "test_class.h"
 #include "Initialize.h"
 #include "ComputeShortestPath.h"
 #include "CalculateKey.h"
