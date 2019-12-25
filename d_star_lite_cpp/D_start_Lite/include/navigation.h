@@ -9,7 +9,6 @@
 #include "std_msgs/Int8.h"
 
 // Include header files, use them as functions
-
 #include <stddef.h>
 #include <stdlib.h>
 #include <math.h>
@@ -21,6 +20,12 @@
 using namespace Eigen;
 using namespace std;
 
+/* Parameters Declarations */
+extern char side;
+
+/* Matrix Declarations */
+extern RowVector2i s_start;
+extern RowVector2i s_goal;
 
 class Navigation
 {
@@ -30,21 +35,8 @@ private:
   ros::Publisher cmd_pub;
 
   geometry_msgs::Vector3Stamped cmd_msg;
-
-  /* Parameters Declarations */
-
-
-
-
-
-  /* Matrix Declarations */
-
   YAML::Node properties; // Perpare for loading param
   string properties_file_name;
-
-  /* Function Declarations */
-
-
 
 public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
@@ -59,9 +51,3 @@ public:
 }
 
 
-/* Parameters Declarations */
-extern char side;
-
-/* Matrix Declarations */
-extern RowVector2i s_start;
-extern RowVector2i s_goal;

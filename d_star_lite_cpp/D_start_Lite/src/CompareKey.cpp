@@ -10,7 +10,7 @@
  */
 
 /* Include files */
-#include "main.h"
+#include "navigation.h"
 #include "Initialize.h"
 #include "CompareKey.h"
 

@@ -1,8 +1,5 @@
 /* Include files */
-#include <iostream>
-#include <stdio.h>
-
-#include "main.h"
+#include "navigation.h"
 #include "Initialize.h"
 #include "UpdateEdgeCost.h"
 #include "isSamePosition.h"

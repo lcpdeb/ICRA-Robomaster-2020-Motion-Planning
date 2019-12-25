@@ -6,24 +6,24 @@
 #include <fstream>
 #include <time.h>
 
-#include "Initialize.h"
-#include "ComputeShortestPath.h"
-#include "GeneratePath.h"
-#include "isSamePosition.h"
-#include "UpdateRegion.h"
-#include "UpdateEdgeCost.h"
+//#include "Initialize.h"
+//#include "ComputeShortestPath.h"
+//#include "GeneratePath.h"
+//#include "isSamePosition.h"
+//#include "UpdateRegion.h"
+//#include "UpdateEdgeCost.h"
 
-/* Parameters Declarations */
-static int goal[2];
-static int start[2];
-char side;
-Region region;
-
-/* Matrix Declarations */
-RowVector2i s_start;
-RowVector2i s_goal;
-RowVector2i s_last;
-MatrixXi path;
+///* Parameters Declarations */
+//static int goal[2];
+//static int start[2];
+//char side;
+//Region region;
+//
+///* Matrix Declarations */
+//RowVector2i s_start;
+//RowVector2i s_goal;
+//RowVector2i s_last;
+//MatrixXi path;
 
 
 
@@ -48,6 +48,7 @@ int main()
     box2.x = 7;
     box2.y = 8;
     std::cout << show_answer(box2) << std::endl;
+    box2.bbbbbox();
     
 
 

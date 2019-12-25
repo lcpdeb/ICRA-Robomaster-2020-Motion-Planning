@@ -1,5 +1,5 @@
 /* Include files */
-#include "main.h"
+#include "navigation.h"
 #include "Initialize.h"
 #include "UpdateRegion.h"
 
