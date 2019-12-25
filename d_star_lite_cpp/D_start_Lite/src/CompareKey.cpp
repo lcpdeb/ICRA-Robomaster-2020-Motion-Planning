@@ -10,7 +10,7 @@
  */
 
 /* Include files */
-#include "navigation.h"
+#include "test_class.h"
 #include "Initialize.h"
 #include "CompareKey.h"
 

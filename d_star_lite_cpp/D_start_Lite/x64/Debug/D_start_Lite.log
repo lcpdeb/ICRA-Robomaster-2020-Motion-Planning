@@ -1,9 +1,2 @@
 ﻿  main.cpp
-  GetMinKey.cpp
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\d_star_lite_cpp\D_start_Lite\src\GetMinKey.cpp(25,28): warning C4244: '=': conversion from 'Eigen::Index' to 'int', possible loss of data
-  UpdateEdgeCost.cpp
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\d_star_lite_cpp\D_start_Lite\src\UpdateEdgeCost.cpp(37,48): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\d_star_lite_cpp\D_start_Lite\src\UpdateEdgeCost.cpp(37,80): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-  test_class.cpp
-  Generating Code...
   D_start_Lite.vcxproj -> D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\d_star_lite_cpp\D_start_Lite\x64\Debug\D_start_Lite.exe
