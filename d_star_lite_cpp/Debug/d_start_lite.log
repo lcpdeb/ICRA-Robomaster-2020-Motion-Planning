@@ -1,0 +1,6 @@
+﻿  main.cpp
+  UpdateEdgeCost.cpp
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\d_star_lite_cpp\src\UpdateEdgeCost.cpp(37,48): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\d_star_lite_cpp\src\UpdateEdgeCost.cpp(37,80): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  Generating Code...
+  d_start_lite.vcxproj -> D:\OneDrive - The Ohio State University\ICRA-Robomaster-2020-Motion-Planning\d_star_lite_cpp\Debug\d_start_lite.exe
