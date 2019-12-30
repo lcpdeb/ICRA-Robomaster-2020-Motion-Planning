@@ -82,12 +82,12 @@ int main()
     {
         //////////////////////////////////////////Update Region//////////////////////////////////////////
         //从裁判系统读取分析后输入
-        region.F1.name = 红方补给区;
-        region.F2.name = 禁止射击区;
-        region.F3.name = 红方回血区;
-        region.F4.name = 蓝方回血区;
-        region.F5.name = 蓝方补给区;
-        region.F6.name = 禁止移动区;
+        region.F1.name = RED_SUPPLY;
+        region.F2.name = SHOOT_FREE;
+        region.F3.name = RED_REGENERATION;
+        region.F4.name = BLUE_REGENERATION;
+        region.F5.name = BLUE_SUPPLY;
+        region.F6.name = MOVE_FREE;
         //更新region
         updated_region = UpdateRegion(region);
         std::cout << "updated_regionis " << updated_region << std::endl;
