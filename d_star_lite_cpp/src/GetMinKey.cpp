@@ -1,7 +1,7 @@
 /* Include files */
-#include "main.h"
-#include "Initialize.h"
-#include "GetMinKey.h"
+#include "../include/main.h"
+#include "../include/Initialize.h"
+#include "../include/GetMinKey.h"
 
 /* Parameters Declarations */
 static const int PrimaryKeyIndex = 2;

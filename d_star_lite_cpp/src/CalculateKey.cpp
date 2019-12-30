@@ -1,7 +1,7 @@
 /* Include files */
-#include "main.h"
-#include "Initialize.h"
-#include "CalculateKey.h"
+#include "../include/main.h"
+#include "../include/Initialize.h"
+#include "../include/CalculateKey.h"
 
 /* Parameters Declarations */
 static double SecondaryKey;

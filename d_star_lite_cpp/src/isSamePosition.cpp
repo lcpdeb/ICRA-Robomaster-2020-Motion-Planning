@@ -1,7 +1,7 @@
-/* Include files */
-#include "main.h"
-#include "Initialize.h"
-#include "isSamePosition.h"
+../include//* Include files */
+#include "../include/main.h"
+#include "../include/Initialize.h"
+#include "../include/isSamePosition.h"
 
 /* Parameters Declarations */
 

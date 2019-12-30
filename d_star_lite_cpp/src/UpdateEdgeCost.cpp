@@ -1,10 +1,10 @@
 /* Include files */
-#include "main.h"
-#include "Initialize.h"
-#include "UpdateEdgeCost.h"
-#include "isSamePosition.h"
-#include "rhs_cal.h"
-#include "UpdateVertex.h"
+#include "../include/main.h"
+#include "../include/Initialize.h"
+#include "../include/UpdateEdgeCost.h"
+#include "../include/isSamePosition.h"
+#include "../include/rhs_cal.h"
+#include "../include/UpdateVertex.h"
 
 /* Parameters Declarations */
 static RowVector2i s_surround_updated;

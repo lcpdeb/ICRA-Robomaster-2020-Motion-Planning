@@ -6,13 +6,13 @@
 #include <fstream>
 #include <time.h>
 
-#include "main.h"
-#include "Initialize.h"
-#include "ComputeShortestPath.h"
-#include "GeneratePath.h"
-#include "isSamePosition.h"
-#include "UpdateRegion.h"
-#include "UpdateEdgeCost.h"
+#include "include/main.h"
+#include "include/Initialize.h"
+#include "include/ComputeShortestPath.h"
+#include "include/GeneratePath.h"
+#include "include/isSamePosition.h"
+#include "include/UpdateRegion.h"
+#include "include/UpdateEdgeCost.h"
 
 /* Parameters Declarations */
 static int goal[2];

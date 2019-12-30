@@ -1,6 +1,6 @@
 /* Include files */
-#include "Initialize.h"
-#include "GetObstacleCover.h"
+#include "../include/Initialize.h"
+#include "../include/GetObstacleCover.h"
 
 /* Parameters Declarations */
 static int total_length;

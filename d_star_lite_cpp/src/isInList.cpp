@@ -1,8 +1,8 @@
-/* Include files */
-#include "main.h"
-#include "Initialize.h"
-#include "isInList.h"
-#include "isSamePosition.h"
+../include//* Include files */
+#include "../include/main.h"
+#include "../include/Initialize.h"
+#include "../include/isInList.h"
+#include "../include/isSamePosition.h"
 
 /* Parameters Declarations */
 static int flag;

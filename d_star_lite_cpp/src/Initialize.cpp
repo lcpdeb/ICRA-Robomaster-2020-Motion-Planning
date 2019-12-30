@@ -1,4 +1,4 @@
-/*
+../include//*
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
@@ -10,11 +10,11 @@
  */
 
 /* Include files */
-#include "main.h"
-#include "Initialize.h"
-#include "GetBoundary.h"
-#include "GetObstacleCover.h"
-#include "Updateregion.h"
+#include "../include/main.h"
+#include "../include/Initialize.h"
+#include "../include/GetBoundary.h"
+#include "../include/GetObstacleCover.h"
+#include "../include/Updateregion.h"
 
 
 /* Parameters Declarations */

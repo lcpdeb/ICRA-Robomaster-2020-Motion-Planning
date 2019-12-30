@@ -1,7 +1,7 @@
-/* Include files */
-#include "main.h"
-#include "Initialize.h"
-#include "rhs_cal.h"
+../include//* Include files */
+#include "../include/main.h"
+#include "../include/Initialize.h"
+#include "../include/rhs_cal.h"
 
 /* Parameters Declarations */
 static double cost_ssprime;

@@ -1,4 +1,4 @@
-/*
+../include//*
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
@@ -10,9 +10,9 @@
  */
 
 /* Include files */
-#include "main.h"
-#include "Initialize.h"
-#include "CompareKey.h"
+#include "../include/main.h"
+#include "../include/Initialize.h"
+#include "../include/CompareKey.h"
 
 /* Parameters Declarations */
 

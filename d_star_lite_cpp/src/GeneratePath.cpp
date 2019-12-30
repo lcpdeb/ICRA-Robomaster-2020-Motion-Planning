@@ -2,10 +2,10 @@
 #include <iostream>
 #include <stdio.h>
 
-#include "main.h"
-#include "Initialize.h"
-#include "GeneratePath.h"
-#include "isSamePosition.h"
+#include "../include/main.h"
+#include "../include/Initialize.h"
+#include "../include/GeneratePath.h"
+#include "../include/isSamePosition.h"
 
 /* Parameters Declarations */
 static double min_rhs;

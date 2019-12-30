@@ -1,13 +1,13 @@
 /* Include files */
-#include "main.h"
-#include "Initialize.h"
-#include "ComputeShortestPath.h"
-#include "CalculateKey.h"
-#include "GetMinKey.h"
-#include "CompareKey.h"
-#include "isSamePosition.h"
-#include "UpdateVertex.h"
-#include "rhs_cal.h"
+#include "../include/main.h"
+#include "../include/Initialize.h"
+#include "../include/ComputeShortestPath.h"
+#include "../include/CalculateKey.h"
+#include "../include/GetMinKey.h"
+#include "../include/CompareKey.h"
+#include "../include/isSamePosition.h"
+#include "../include/UpdateVertex.h"
+#include "../include/rhs_cal.h"
 
 /* Parameters Declarations */
 static int minIndex;

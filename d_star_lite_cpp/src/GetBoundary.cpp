@@ -1,6 +1,6 @@
 /* Include files */
-#include "Initialize.h"
-#include "GetBoundary.h"
+#include "../include/Initialize.h"
+#include "../include/GetBoundary.h"
 
 /* Parameters Declarations */
 static int total_length;

@@ -2,7 +2,7 @@
 #define MAIN_H
 
 /* Include files */
-#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
 using namespace Eigen;
 
 /* Parameters Declarations */

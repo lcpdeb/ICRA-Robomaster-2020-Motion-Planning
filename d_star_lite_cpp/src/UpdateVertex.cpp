@@ -1,9 +1,9 @@
-/* Include files */
-#include "main.h"
-#include "Initialize.h"
-#include "UpdateVertex.h"
-#include "isInList.h"
-#include "CalculateKey.h"
+../include//* Include files */
+#include "../include/main.h"
+#include "../include/Initialize.h"
+#include "../include/UpdateVertex.h"
+#include "../include/isInList.h"
+#include "../include/CalculateKey.h"
 
 /* Parameters Declarations */
 static int isInListFlag;
