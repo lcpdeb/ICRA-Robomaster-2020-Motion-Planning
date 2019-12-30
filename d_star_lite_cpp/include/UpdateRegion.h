@@ -6,13 +6,13 @@
 /* Parameters Declarations */
 typedef enum
 {
-    未知 = 0,
-    红方补给区,
-    禁止射击区,
-    蓝方补给区,
-    蓝方回血区,
-    禁止移动区,
-    红方回血区,
+    UNKNOWN = 0,
+    RED_SUPPLY,
+    SHOOT_FREE,
+    BLUE_SUPPLY,
+    BLUE_REGENERATION,
+    MOVE_FREE,
+    RED_REGENERATION,
 }Zone_name;
 typedef struct
 {

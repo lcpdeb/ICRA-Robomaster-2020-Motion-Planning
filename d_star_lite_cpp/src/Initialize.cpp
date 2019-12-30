@@ -51,8 +51,8 @@ void Initialize()
     //GetBoundary();
     GetObstacleCover();
     //初始化region
-    region.F1.name = 红方补给区;
-    region.F1.last_name = 未知;
+    region.F1.name = RED_SUPPLY;
+    region.F1.last_name = UNKNOWN;
     region.F1.x = 2.3 * 10 / accuracy + 1;
     region.F1.y = 31.2 * 10 / accuracy + 1;
     region.F1.cover.setZero(15, 2);
@@ -72,8 +72,8 @@ void Initialize()
                         11, 35,
                         11, 36;
 
-    region.F2.name = 禁止射击区;
-    region.F2.last_name = 未知;
+    region.F2.name = SHOOT_FREE;
+    region.F2.last_name = UNKNOWN;
     region.F2.x = 16.3 * 10 / accuracy + 1;
     region.F2.y = 16.95 * 10 / accuracy + 1;
     region.F2.cover.setZero(25, 2);
@@ -103,8 +103,8 @@ void Initialize()
                         15,	22,
                         25,	22;
 
-    region.F3.name = 蓝方补给区;
-    region.F3.last_name = 未知;
+    region.F3.name = BLUE_SUPPLY;
+    region.F3.last_name = UNKNOWN;
     region.F3.x = (81 - 38.3 - 5.4) * 10 / accuracy + 1;
     region.F3.y = (51 - 2.7 - 4.8) * 10 / accuracy + 1;
     region.F3.cover.setZero(12, 2);
@@ -121,8 +121,8 @@ void Initialize()
                         36,	50,
                         46,	50;
 
-    region.F4.name = 蓝方回血区;
-    region.F4.last_name = 未知;
+    region.F4.name = BLUE_REGENERATION;
+    region.F4.last_name = UNKNOWN;
     region.F4.x = (81 - 2.3 - 5.4) * 10 / accuracy + 1;
     region.F4.y = (51 - 31.2 - 4.8) * 10 / accuracy + 1;
     region.F4.cover.setZero(15, 2);
@@ -142,8 +142,8 @@ void Initialize()
                         72,	21,
                         72,	22;
 
-    region.F5.name = 禁止移动区;
-    region.F5.last_name = 未知;
+    region.F5.name = MOVE_FREE;
+    region.F5.last_name = UNKNOWN;
     region.F5.x = (81 - 16.3 - 5.4) * 10 / accuracy + 1;
     region.F5.y = (51 - 16.95 - 4.8) * 10 / accuracy + 1;
     region.F5.cover.setZero(25, 2);
@@ -173,8 +173,8 @@ void Initialize()
                         58,	37,
                         68,	37;
 
-    region.F6.name = 红方回血区;
-    region.F6.last_name = 未知;
+    region.F6.name = RED_REGENERATION;
+    region.F6.last_name = UNKNOWN;
     region.F6.x = 38.3 * 10 / accuracy + 1;
     region.F6.y = 2.7 * 10 / accuracy + 1;
     region.F6.cover.setZero(12, 2);

@@ -18,56 +18,56 @@ MatrixXi UpdateRegion(Region region)
     if (side == 'R')
     {
         //F1 Zone
-        if ((region.F1.last_name == 禁止射击区 || region.F1.last_name == 禁止移动区 || region.F1.last_name == 蓝方回血区) && (region.F1.name != 禁止射击区 && region.F1.name != 禁止移动区 && region.F1.name != 蓝方回血区))
+        if ((region.F1.last_name == SHOOT_FREE || region.F1.last_name == MOVE_FREE || region.F1.last_name == BLUE_REGENERATION) && (region.F1.name != SHOOT_FREE && region.F1.name != MOVE_FREE && region.F1.name != BLUE_REGENERATION))
         {
             MatrixVerticalSplice(new_free, region.F1.cover);
         }
-        if ((region.F1.last_name != 禁止射击区 && region.F1.last_name != 禁止移动区 && region.F1.last_name != 蓝方回血区) && (region.F1.name == 禁止射击区 || region.F1.name == 禁止移动区 || region.F1.name == 蓝方回血区))
+        if ((region.F1.last_name != SHOOT_FREE && region.F1.last_name != MOVE_FREE && region.F1.last_name != BLUE_REGENERATION) && (region.F1.name == SHOOT_FREE || region.F1.name == MOVE_FREE || region.F1.name == BLUE_REGENERATION))
         {
             MatrixVerticalSplice(new_obstacle, region.F1.cover);
         }
         //F2 Zone
-        if ((region.F2.last_name == 禁止射击区 || region.F2.last_name == 禁止移动区 || region.F2.last_name == 蓝方回血区) && (region.F2.name != 禁止射击区 && region.F2.name != 禁止移动区 && region.F2.name != 蓝方回血区))
+        if ((region.F2.last_name == SHOOT_FREE || region.F2.last_name == MOVE_FREE || region.F2.last_name == BLUE_REGENERATION) && (region.F2.name != SHOOT_FREE && region.F2.name != MOVE_FREE && region.F2.name != BLUE_REGENERATION))
         {
             MatrixVerticalSplice(new_free, region.F2.cover);
         }
-        if ((region.F2.last_name != 禁止射击区 && region.F2.last_name != 禁止移动区 && region.F2.last_name != 蓝方回血区) && (region.F2.name == 禁止射击区 || region.F2.name == 禁止移动区 || region.F2.name == 蓝方回血区))
+        if ((region.F2.last_name != SHOOT_FREE && region.F2.last_name != MOVE_FREE && region.F2.last_name != BLUE_REGENERATION) && (region.F2.name == SHOOT_FREE || region.F2.name == MOVE_FREE || region.F2.name == BLUE_REGENERATION))
         {
             MatrixVerticalSplice(new_obstacle, region.F2.cover);
         }
         //F3 Zone
-        if ((region.F3.last_name == 禁止射击区 || region.F3.last_name == 禁止移动区 || region.F3.last_name == 蓝方回血区) && (region.F3.name != 禁止射击区 && region.F3.name != 禁止移动区 && region.F3.name != 蓝方回血区))
+        if ((region.F3.last_name == SHOOT_FREE || region.F3.last_name == MOVE_FREE || region.F3.last_name == BLUE_REGENERATION) && (region.F3.name != SHOOT_FREE && region.F3.name != MOVE_FREE && region.F3.name != BLUE_REGENERATION))
         {
             MatrixVerticalSplice(new_free, region.F3.cover);
         }
-        if ((region.F3.last_name != 禁止射击区 && region.F3.last_name != 禁止移动区 && region.F3.last_name != 蓝方回血区) && (region.F3.name == 禁止射击区 || region.F3.name == 禁止移动区 || region.F3.name == 蓝方回血区))
+        if ((region.F3.last_name != SHOOT_FREE && region.F3.last_name != MOVE_FREE && region.F3.last_name != BLUE_REGENERATION) && (region.F3.name == SHOOT_FREE || region.F3.name == MOVE_FREE || region.F3.name == BLUE_REGENERATION))
         {
             MatrixVerticalSplice(new_obstacle, region.F3.cover);
         }
         //F4 Zone
-        if ((region.F4.last_name == 禁止射击区 || region.F4.last_name == 禁止移动区 || region.F4.last_name == 蓝方回血区) && (region.F4.name != 禁止射击区 && region.F4.name != 禁止移动区 && region.F4.name != 蓝方回血区))
+        if ((region.F4.last_name == SHOOT_FREE || region.F4.last_name == MOVE_FREE || region.F4.last_name == BLUE_REGENERATION) && (region.F4.name != SHOOT_FREE && region.F4.name != MOVE_FREE && region.F4.name != BLUE_REGENERATION))
         {
             MatrixVerticalSplice(new_free, region.F4.cover);
         }
-        if ((region.F4.last_name != 禁止射击区 && region.F4.last_name != 禁止移动区 && region.F4.last_name != 蓝方回血区) && (region.F4.name == 禁止射击区 || region.F4.name == 禁止移动区 || region.F4.name == 蓝方回血区))
+        if ((region.F4.last_name != SHOOT_FREE && region.F4.last_name != MOVE_FREE && region.F4.last_name != BLUE_REGENERATION) && (region.F4.name == SHOOT_FREE || region.F4.name == MOVE_FREE || region.F4.name == BLUE_REGENERATION))
         {
             MatrixVerticalSplice(new_obstacle, region.F4.cover);
         }
         //F5 Zone
-        if ((region.F5.last_name == 禁止射击区 || region.F5.last_name == 禁止移动区 || region.F5.last_name == 蓝方回血区) && (region.F5.name != 禁止射击区 && region.F5.name != 禁止移动区 && region.F5.name != 蓝方回血区))
+        if ((region.F5.last_name == SHOOT_FREE || region.F5.last_name == MOVE_FREE || region.F5.last_name == BLUE_REGENERATION) && (region.F5.name != SHOOT_FREE && region.F5.name != MOVE_FREE && region.F5.name != BLUE_REGENERATION))
         {
             MatrixVerticalSplice(new_free, region.F5.cover);
         }
-        if ((region.F5.last_name != 禁止射击区 && region.F5.last_name != 禁止移动区 && region.F5.last_name != 蓝方回血区) && (region.F5.name == 禁止射击区 || region.F5.name == 禁止移动区 || region.F5.name == 蓝方回血区))
+        if ((region.F5.last_name != SHOOT_FREE && region.F5.last_name != MOVE_FREE && region.F5.last_name != BLUE_REGENERATION) && (region.F5.name == SHOOT_FREE || region.F5.name == MOVE_FREE || region.F5.name == BLUE_REGENERATION))
         {
             MatrixVerticalSplice(new_obstacle, region.F5.cover);
         }
         //F6 Zone
-        if ((region.F6.last_name == 禁止射击区 || region.F6.last_name == 禁止移动区 || region.F6.last_name == 蓝方回血区) && (region.F6.name != 禁止射击区 && region.F6.name != 禁止移动区 && region.F6.name != 蓝方回血区))
+        if ((region.F6.last_name == SHOOT_FREE || region.F6.last_name == MOVE_FREE || region.F6.last_name == BLUE_REGENERATION) && (region.F6.name != SHOOT_FREE && region.F6.name != MOVE_FREE && region.F6.name != BLUE_REGENERATION))
         {
             MatrixVerticalSplice(new_free, region.F6.cover);
         }
-        if ((region.F6.last_name != 禁止射击区 && region.F6.last_name != 禁止移动区 && region.F6.last_name != 蓝方回血区) && (region.F6.name == 禁止射击区 || region.F6.name == 禁止移动区 || region.F6.name == 蓝方回血区))
+        if ((region.F6.last_name != SHOOT_FREE && region.F6.last_name != MOVE_FREE && region.F6.last_name != BLUE_REGENERATION) && (region.F6.name == SHOOT_FREE || region.F6.name == MOVE_FREE || region.F6.name == BLUE_REGENERATION))
         {
             MatrixVerticalSplice(new_obstacle, region.F6.cover);
         }
@@ -76,56 +76,56 @@ MatrixXi UpdateRegion(Region region)
     else if (side == 'B')
     {
         //F1 Zone
-        if ((region.F1.last_name == 禁止射击区 || region.F1.last_name == 禁止移动区 || region.F1.last_name == 红方回血区) && (region.F1.name != 禁止射击区 && region.F1.name != 禁止移动区 && region.F1.name != 红方回血区))
+        if ((region.F1.last_name == SHOOT_FREE || region.F1.last_name == MOVE_FREE || region.F1.last_name == RED_REGENERATION) && (region.F1.name != SHOOT_FREE && region.F1.name != MOVE_FREE && region.F1.name != RED_REGENERATION))
         {
             MatrixVerticalSplice(new_free, region.F1.cover);
         }
-        if ((region.F1.last_name != 禁止射击区 && region.F1.last_name != 禁止移动区 && region.F1.last_name != 红方回血区) && (region.F1.name == 禁止射击区 || region.F1.name == 禁止移动区 || region.F1.name == 红方回血区))
+        if ((region.F1.last_name != SHOOT_FREE && region.F1.last_name != MOVE_FREE && region.F1.last_name != RED_REGENERATION) && (region.F1.name == SHOOT_FREE || region.F1.name == MOVE_FREE || region.F1.name == RED_REGENERATION))
         {
             MatrixVerticalSplice(new_obstacle, region.F1.cover);
         }
         //F2 Zone
-        if ((region.F2.last_name == 禁止射击区 || region.F2.last_name == 禁止移动区 || region.F2.last_name == 红方回血区) && (region.F2.name != 禁止射击区 && region.F2.name != 禁止移动区 && region.F2.name != 红方回血区))
+        if ((region.F2.last_name == SHOOT_FREE || region.F2.last_name == MOVE_FREE || region.F2.last_name == RED_REGENERATION) && (region.F2.name != SHOOT_FREE && region.F2.name != MOVE_FREE && region.F2.name != RED_REGENERATION))
         {
             MatrixVerticalSplice(new_free, region.F2.cover);
         }
-        if ((region.F2.last_name != 禁止射击区 && region.F2.last_name != 禁止移动区 && region.F2.last_name != 红方回血区) && (region.F2.name == 禁止射击区 || region.F2.name == 禁止移动区 || region.F2.name == 红方回血区))
+        if ((region.F2.last_name != SHOOT_FREE && region.F2.last_name != MOVE_FREE && region.F2.last_name != RED_REGENERATION) && (region.F2.name == SHOOT_FREE || region.F2.name == MOVE_FREE || region.F2.name == RED_REGENERATION))
         {
             MatrixVerticalSplice(new_obstacle, region.F2.cover);
         }
         //F3 Zone
-        if ((region.F3.last_name == 禁止射击区 || region.F3.last_name == 禁止移动区 || region.F3.last_name == 红方回血区) && (region.F3.name != 禁止射击区 && region.F3.name != 禁止移动区 && region.F3.name != 红方回血区))
+        if ((region.F3.last_name == SHOOT_FREE || region.F3.last_name == MOVE_FREE || region.F3.last_name == RED_REGENERATION) && (region.F3.name != SHOOT_FREE && region.F3.name != MOVE_FREE && region.F3.name != RED_REGENERATION))
         {
             MatrixVerticalSplice(new_free, region.F3.cover);
         }
-        if ((region.F3.last_name != 禁止射击区 && region.F3.last_name != 禁止移动区 && region.F3.last_name != 红方回血区) && (region.F3.name == 禁止射击区 || region.F3.name == 禁止移动区 || region.F3.name == 红方回血区))
+        if ((region.F3.last_name != SHOOT_FREE && region.F3.last_name != MOVE_FREE && region.F3.last_name != RED_REGENERATION) && (region.F3.name == SHOOT_FREE || region.F3.name == MOVE_FREE || region.F3.name == RED_REGENERATION))
         {
             MatrixVerticalSplice(new_obstacle, region.F3.cover);
         }
         //F4 Zone
-        if ((region.F4.last_name == 禁止射击区 || region.F4.last_name == 禁止移动区 || region.F4.last_name == 红方回血区) && (region.F4.name != 禁止射击区 && region.F4.name != 禁止移动区 && region.F4.name != 红方回血区))
+        if ((region.F4.last_name == SHOOT_FREE || region.F4.last_name == MOVE_FREE || region.F4.last_name == RED_REGENERATION) && (region.F4.name != SHOOT_FREE && region.F4.name != MOVE_FREE && region.F4.name != RED_REGENERATION))
         {
             MatrixVerticalSplice(new_free, region.F4.cover);
         }
-        if ((region.F4.last_name != 禁止射击区 && region.F4.last_name != 禁止移动区 && region.F4.last_name != 红方回血区) && (region.F4.name == 禁止射击区 || region.F4.name == 禁止移动区 || region.F4.name == 红方回血区))
+        if ((region.F4.last_name != SHOOT_FREE && region.F4.last_name != MOVE_FREE && region.F4.last_name != RED_REGENERATION) && (region.F4.name == SHOOT_FREE || region.F4.name == MOVE_FREE || region.F4.name == RED_REGENERATION))
         {
             MatrixVerticalSplice(new_obstacle, region.F4.cover);
         }
         //F5 Zone
-        if ((region.F5.last_name == 禁止射击区 || region.F5.last_name == 禁止移动区 || region.F5.last_name == 红方回血区) && (region.F5.name != 禁止射击区 && region.F5.name != 禁止移动区 && region.F5.name != 红方回血区))
+        if ((region.F5.last_name == SHOOT_FREE || region.F5.last_name == MOVE_FREE || region.F5.last_name == RED_REGENERATION) && (region.F5.name != SHOOT_FREE && region.F5.name != MOVE_FREE && region.F5.name != RED_REGENERATION))
         {
             MatrixVerticalSplice(new_free, region.F5.cover);
         }
-        if ((region.F5.last_name != 禁止射击区 && region.F5.last_name != 禁止移动区 && region.F5.last_name != 红方回血区) && (region.F5.name == 禁止射击区 || region.F5.name == 禁止移动区 || region.F5.name == 红方回血区))
+        if ((region.F5.last_name != SHOOT_FREE && region.F5.last_name != MOVE_FREE && region.F5.last_name != RED_REGENERATION) && (region.F5.name == SHOOT_FREE || region.F5.name == MOVE_FREE || region.F5.name == RED_REGENERATION))
         {
             MatrixVerticalSplice(new_obstacle, region.F5.cover);
         }
         //F6 Zone
-        if ((region.F6.last_name == 禁止射击区 || region.F6.last_name == 禁止移动区 || region.F6.last_name == 红方回血区) && (region.F6.name != 禁止射击区 && region.F6.name != 禁止移动区 && region.F6.name != 红方回血区))
+        if ((region.F6.last_name == SHOOT_FREE || region.F6.last_name == MOVE_FREE || region.F6.last_name == RED_REGENERATION) && (region.F6.name != SHOOT_FREE && region.F6.name != MOVE_FREE && region.F6.name != RED_REGENERATION))
         {
             MatrixVerticalSplice(new_free, region.F6.cover);
         }
-        if ((region.F6.last_name != 禁止射击区 && region.F6.last_name != 禁止移动区 && region.F6.last_name != 红方回血区) && (region.F6.name == 禁止射击区 || region.F6.name == 禁止移动区 || region.F6.name == 红方回血区))
+        if ((region.F6.last_name != SHOOT_FREE && region.F6.last_name != MOVE_FREE && region.F6.last_name != RED_REGENERATION) && (region.F6.name == SHOOT_FREE || region.F6.name == MOVE_FREE || region.F6.name == RED_REGENERATION))
         {
             MatrixVerticalSplice(new_obstacle, region.F6.cover);
         }
