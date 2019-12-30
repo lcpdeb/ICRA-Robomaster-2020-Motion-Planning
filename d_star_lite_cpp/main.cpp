@@ -41,7 +41,7 @@ int main()
     //s_start << start[0], start[1];
 
     s_goal << 3, 3;
-    s_start << 80, 50;
+    s_start << 78, 45;
 
     //看看时间
     clock_t start_time, end_time;
@@ -67,7 +67,7 @@ int main()
     std::cout << "Path is:" << std::endl;
     std::cout << path << std::endl;
     std::cout << std::endl;
-    std::cout << "\n此程序的运行时间为" << totaltime << "秒" << std::endl;
+    std::cout << "\nThis program consumed " << totaltime << " seconds" << std::endl;
 
     std::ofstream path_file("pathcpp.txt");
     path_file << path;

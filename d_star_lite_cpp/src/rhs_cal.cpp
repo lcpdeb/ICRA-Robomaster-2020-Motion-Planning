@@ -1,4 +1,3 @@
-../include//* Include files */
 #include "../include/main.h"
 #include "../include/Initialize.h"
 #include "../include/rhs_cal.h"

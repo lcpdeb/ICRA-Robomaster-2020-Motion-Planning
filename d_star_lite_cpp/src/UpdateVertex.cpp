@@ -1,4 +1,4 @@
-../include//* Include files */
+/* Include files */
 #include "../include/main.h"
 #include "../include/Initialize.h"
 #include "../include/UpdateVertex.h"
